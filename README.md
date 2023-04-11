@@ -19,7 +19,7 @@ Reece Stephenson
 [(@reece-stephenson)](https://github.com/reece-stephenson)
 
 Ryan Parker
-[(@)](https://github.com/)
+[(@)](https://github.com/ryanneilparker)
 
 Stephen Potgieter
 [(@)](https://github.com/)
