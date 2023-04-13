@@ -33,8 +33,6 @@ namespace FoodApp.Controllers
                 mail.To.Add(email);
                 mail.Subject = subject;
                 mail.IsBodyHtml = true;
-                //string workingDirectory = Environment.CurrentDirectory;
-                //string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\email.jpeg");
                 string attachmentName = @"Resources\email.jpeg"; // note lowercase extension
                 string attachmentPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, attachmentName);
                 Attachment picture = new Attachment(attachmentPath, MediaTypeNames.Image.Jpeg);

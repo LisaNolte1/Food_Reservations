@@ -77,3 +77,17 @@ C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.csproj
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.csproj.CopyComplete
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.dll
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.pdb
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.PlatformServices.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.PlatformServices.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.pdb
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.xml
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.pdb
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.xml
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.pdb
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.xml
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.pdb
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.xml
