@@ -10,7 +10,7 @@ Ivan Von Staden
 [(@)](https://github.com/)
 
 Karl Haupt
-[(@)](https://github.com/)
+[(@KarlHaupt)](https://github.com/KarlHaupt)
 
 Lisa Nolte
 [(@LisaNolte1)](https://github.com/LisaNolte1)
