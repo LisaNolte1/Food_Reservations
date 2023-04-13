@@ -285,6 +285,15 @@ th {
 .glyphicon-plus:before {
   content: "\002b";
 }
+
+.large {
+    font-size: 40px;
+}
+
+.margin-top-twenty {
+    margin-top: 20px;
+}
+
 .glyphicon-euro:before,
 .glyphicon-eur:before {
   content: "\20ac";
