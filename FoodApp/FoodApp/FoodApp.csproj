@@ -142,6 +142,7 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\Utility\Authinator.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +190,7 @@
     <Content Include="Views\Form\createForm.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Preferences\Preferences.cshtml" />
+    <Content Include="Views\Menu\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
