@@ -142,7 +142,6 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\Utility\Authinator.cs" />
     <Compile Include="Global.asax.cs">

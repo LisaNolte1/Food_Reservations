@@ -8,8 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FoodApp.Controllers.Utility;
 using System.IO;
-using System.Reflection;
-using System.Net.NetworkInformation;
+using System.Net;
 using System.Net.Mime;
 
 namespace FoodApp.Controllers
@@ -20,15 +19,18 @@ namespace FoodApp.Controllers
 
         private const string noreplyEmail = "johnnyblancnoreply@gmail.com";
         private const string subject = "Lunch Mailer";
-        private const string body = "<h2>BLA BLA</h2>";
+        private const string formLink = "https://localhost:44337/Preferences/Preferences";
         // GET: Email
 
         [Route("/sendEmails")]
         [HttpGet]
-        public ActionResult sendEmails(string email = "ivanblizz23@gmail.com", string parameters = "?name=4", string formLink= "https://google.com/")
+        public ActionResult sendEmails(string email = "ivanblizz23@gmail.com", string parameters = "?name=4")
         {
             using (MailMessage mail = new MailMessage())
             {
+                HttpListener listener = new HttpListener();
+
+               
                 mail.From = new MailAddress(noreplyEmail);
                 mail.To.Add(email);
                 mail.Subject = subject;
@@ -40,7 +42,7 @@ namespace FoodApp.Controllers
                 picture.ContentId = contentID;
                 mail.Attachments.Add(picture);
                 mail.Body = $"<html>" +
-                            $"<body>" +
+                $"<body>" +
                             $"<a href=\"{formLink}\">" +
                             $"<img src=\"cid:{contentID}\">" +
                             "</a>" +
