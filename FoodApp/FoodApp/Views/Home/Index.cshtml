@@ -1,4 +1,5 @@
-﻿@{
+
+@{
     ViewBag.Title = "Home Page";
     // this will need to be fetched from the model?
     bool isAdmin = true;
@@ -10,7 +11,27 @@
     <p class="text-center">Welcome @name</p>
 </div>
 
-<div class="center-block text-center">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign-In with Microsoft Guide</title>
+</head>
+<body>
+    @if (Request.IsAuthenticated)
+    {
+        <span><br />Hello @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;</span>
+        <br /><br />
+        @Html.ActionLink("See Your Claims", "Index", "Claims")
+        <br /><br />
+        @Html.ActionLink("Sign out", "SignOut", "Home")
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
+    {
+        <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
+    }
+    
+    <div class="center-block text-center">
     <div>
         @if (isAdmin == true)
         {
@@ -24,3 +45,5 @@
 
 
 </div>
+</body>
+</html>

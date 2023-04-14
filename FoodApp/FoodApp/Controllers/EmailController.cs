@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Net;
 using System.Security;
-using System.Web;
 using System.Web.Mvc;
 using FoodApp.Controllers.Utility;
 using System.IO;
-using System.Reflection;
-using System.Net.NetworkInformation;
 using System.Net.Mime;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     [Route("/Email")]
     public class EmailController : Controller
     {
