@@ -1,4 +1,4 @@
-﻿using System.Web;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
@@ -27,11 +27,6 @@ namespace FoodApp.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
     }
 }

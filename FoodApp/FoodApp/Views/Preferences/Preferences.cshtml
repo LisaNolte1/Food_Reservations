@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Preferences";
+}
+
+<h2 class="text-center">THIS IS THE PREFERENCES PAGE</h2>
+
+
+<div class="text-center">
+    <form>
+        <h2>Question 1:</h2>
+        <label for="text1">Enter your name:</label>
+        <input type="text" id="text1" name="text1"><br>
+
+        <h2>Question 2:</h2>
+        <label for="text2">Enter your age:</label>
+        <input type="text" id="text2" name="text2"><br>
+
+        <h2>Question 3:</h2>
+        <p>What is your favorite color?</p>
+        <input type="radio" id="red" name="color" value="red">
+        <label for="red">Red</label><br>
+        <input type="radio" id="blue" name="color" value="blue">
+        <label for="blue">Blue</label><br>
+        <input type="radio" id="green" name="color" value="green">
+        <label for="green">Green</label><br>
+
+        <h2>Question 4:</h2>
+        <p>What is your favorite fruit?</p>
+        <input type="radio" id="apple" name="fruit" value="apple">
+        <label for="apple">Apple</label><br>
+        <input type="radio" id="banana" name="fruit" value="banana">
+        <label for="banana">Banana</label><br>
+        <input type="radio" id="orange" name="fruit" value="orange">
+        <label for="orange">Orange</label><br>
+
+        <h2>Question 5:</h2>
+        <p>What is your favorite animal?</p>
+        <input type="radio" id="dog" name="animal" value="dog">
+        <label for="dog">Dog</label><br>
+        <input type="radio" id="cat" name="animal" value="cat">
+        <label for="cat">Cat</label><br>
+        <input type="radio" id="bird" name="animal" value="bird">
+        <label for="bird">Bird</label><br>
+        <br><br>
+    </form>
+
+    <button onclick="window.location.href = '@Url.Action("Menu", "Menu")';">
+        Submit
+    </button>
+</div>

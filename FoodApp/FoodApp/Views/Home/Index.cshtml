@@ -1,9 +1,15 @@
-﻿
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home Page";
+    // this will need to be fetched from the model?
+    bool isAdmin = true;
+    // also fetched from the model?
+    string name = "Stephen";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <p class="text-center">Welcome @name</p>
+</div>
 
 <html>
 <head>
@@ -24,5 +30,20 @@
     {
         <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
     }
+    
+    <div class="center-block text-center">
+    <div>
+        @if (isAdmin == true)
+        {
+            @Html.ActionLink("Go to Admin", "Admin", "Admin", null, new { @class = "large" })
+        }
+
+    </div>
+    <div class="margin-top-twenty">
+        @Html.ActionLink("Capture/Edit Preferences", "Preferences", "Preferences", null, new { @class = "large" })
+    </div>
+
+
+</div>
 </body>
 </html>
