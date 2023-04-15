@@ -142,12 +142,12 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\Utility\Authinator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,10 +191,10 @@
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Preferences\Preferences.cshtml" />
     <Content Include="Views\Menu\Menu.cshtml" />
+    <Content Include="Views\Preferences\SubmitPreferences.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
