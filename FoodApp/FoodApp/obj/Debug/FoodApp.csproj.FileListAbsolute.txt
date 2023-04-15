@@ -175,6 +175,12 @@ C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\roslyn\vbc.rsp
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\roslyn\VBCSCompiler.exe
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\roslyn\VBCSCompiler.exe.config
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Antlr3.Runtime.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.PlatformServices.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.dll
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.PlatformServices.dll
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Configuration.ConfigurationBuilders.Base.dll
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll
@@ -237,6 +243,7 @@ C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.Razor.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.Deployment.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.Razor.xml
+C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.csproj.CopyComplete
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.dll
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.pdb
