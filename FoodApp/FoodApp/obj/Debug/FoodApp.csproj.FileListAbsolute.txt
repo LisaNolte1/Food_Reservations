@@ -213,3 +213,5 @@ C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Conf
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Configuration.ConfigurationBuilders.Base.xml
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.xml
+C:\Users\bbdnet2757\Documents\Graduate Program - The Hive\C#\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.csproj.AssemblyReference.cache
+C:\Users\bbdnet2757\Documents\Graduate Program - The Hive\C#\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.csproj.CoreCompileInputs.cache
