@@ -24,7 +24,7 @@ namespace FoodApp
             }
         }
 
-        public DataTable ExecuteQuery(string query, SqlParameter[]? parameters)
+        public DataTable ExecuteQuery(string query, SqlParameter[] parameters)
         {
             DataTable result = new DataTable();
 

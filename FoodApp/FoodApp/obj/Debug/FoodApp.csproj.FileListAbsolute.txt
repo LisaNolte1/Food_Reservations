@@ -51,16 +51,9 @@ C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\roslyn\vbc.rsp
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\roslyn\VBCSCompiler.exe
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\roslyn\VBCSCompiler.exe.config
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Antlr3.Runtime.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.PlatformServices.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.PlatformServices.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Logging.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Protocols.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Tokens.dll
@@ -81,17 +74,8 @@ C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Web.Web
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.Razor.dll
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\WebGrease.dll
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.pdb
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.xml
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.pdb
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Auth.xml
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.pdb
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Core.xml
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.pdb
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Google.Apis.Forms.v1.xml
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.JsonWebTokens.xml
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Logging.xml
-C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Protocols.xml
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
 C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.IdentityModel.Tokens.xml
@@ -243,7 +227,20 @@ C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.Razor.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.Deployment.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\System.Web.WebPages.Razor.xml
-C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.csproj.CopyComplete
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.dll
 C:\sandbox\C#-levelup\Food_Reservations\FoodApp\FoodApp\obj\Debug\FoodApp.pdb
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Extensions.Primitives.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Buffers.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Memory.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Numerics.Vectors.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.ValueTuple.dll
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\Microsoft.Extensions.Primitives.xml
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Buffers.xml
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Memory.xml
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Numerics.Vectors.xml
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Grad Program\Levelups\C#\Food_Reservations\FoodApp\FoodApp\bin\System.ValueTuple.xml
