@@ -1,14 +1,14 @@
 
 @{
     ViewBag.Title = "Home Page";
-    // this will need to be fetched from the model?
-    bool isAdmin = true;
-    // also fetched from the model?
-    string name = "Stephen";
+    string email = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
+    var userController = new FoodApp.Controllers.UsersController();
+    string adminEmail = userController.getAdminEmail();
+    string username = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
 }
 
 <div class="jumbotron">
-    <p class="text-center">Welcome @name</p>
+    <p class="text-center">Welcome @username</p>
 </div>
 
 <html>
@@ -19,8 +19,6 @@
 <body>
     @if (Request.IsAuthenticated)
     {
-        <span><br />Hello @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;</span>
-        <br /><br />
         @Html.ActionLink("See Your Claims", "Index", "Claims")
         <br /><br />
         @Html.ActionLink("Sign out", "SignOut", "Home")
@@ -33,7 +31,7 @@
     
     <div class="center-block text-center">
     <div>
-        @if (isAdmin == true)
+        @if (email == adminEmail)
         {
             @Html.ActionLink("Go to Admin", "Admin", "Admin", null, new { @class = "large" })
         }

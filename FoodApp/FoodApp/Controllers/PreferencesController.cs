@@ -1,6 +1,7 @@
 ﻿using FoodApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,10 +21,14 @@ namespace FoodApp.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult SavePreferences(Preferences model)
         {
-            //Fetch currently logged in user and save this model against their email
-            if(model != null)
+            string userfullname = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
+            string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
+            Debug.WriteLine(userfullname);
+            Debug.WriteLine(emailAddress);
+            if (model != null)
             {
                 Console.Beep();
                 //Save data to database
