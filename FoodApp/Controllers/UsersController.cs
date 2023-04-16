@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodApp.Controllers.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +10,10 @@ namespace FoodApp.Controllers
     public class UsersController : Controller
     {
        
-        public string getAdminEmail()
+        public bool getAdmin()
         {
             //this will need to be dynamic (query that finds and return admin's email)
-            return "lisan@bbd.co.za";
+            return MainUtility.GetAdmin();
         }
     }
 }

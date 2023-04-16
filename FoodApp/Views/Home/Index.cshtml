@@ -3,7 +3,6 @@
     ViewBag.Title = "Home Page";
     string email = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
     var userController = new FoodApp.Controllers.UsersController();
-    string adminEmail = userController.getAdminEmail();
     string username = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
 }
 
@@ -31,7 +30,7 @@
     
     <div class="center-block text-center">
     <div>
-        @if (email == adminEmail)
+        @if (userController.getAdmin())
         {
             @Html.ActionLink("Go to Admin", "Admin", "Admin", null, new { @class = "large" })
         }

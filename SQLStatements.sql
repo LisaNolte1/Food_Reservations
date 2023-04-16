@@ -12,7 +12,6 @@ GO
 CREATE TABLE [USERS] (
   [user_id] integer IDENTITY(1,1) PRIMARY KEY,
   [user_email] nvarchar(255),
-  [preference_id] integer,
   [role_id] integer
 )
 GO
@@ -23,11 +22,6 @@ CREATE TABLE [ROLES] (
 )
 GO
 
-CREATE TABLE [PREFERENCES] (
-  [preference_id] integer PRIMARY KEY,
-  [preference_type] nvarchar(255)
-)
-GO
 
 CREATE TABLE [DAYS] (
   [day_id] integer PRIMARY KEY,
@@ -41,24 +35,27 @@ CREATE TABLE [CUISINES] (
 )
 GO
 
-CREATE TABLE [AVAILABILITY] (
-  [availability_id] integer PRIMARY KEY,
-  [user_id] integer,
-  [day_id] integer
+
+CREATE TABLE [SETTINGS](
+	[user_id] integer PRIMARY KEY,
+	[day_id] integer,
+	[preference_id] integer
 )
 GO
 
 CREATE TABLE [EVENTS] (
   [event_id] integer PRIMARY KEY,
   [cuisine_id] integer,
-  [day_id] integer
+  [day_id] integer,
+  [date] date
 )
 GO
 
 CREATE TABLE [BOOKINGS] (
   [booking_id] integer PRIMARY KEY,
   [user_id] integer,
-  [event_id] integer
+  [event_id] integer,
+  [date] date
 )
 GO
 
@@ -73,13 +70,13 @@ GO
 ALTER TABLE [USERS] ADD FOREIGN KEY ([role_id]) REFERENCES [ROLES] ([role_id])
 GO
 
-ALTER TABLE [USERS] ADD FOREIGN KEY ([preference_id]) REFERENCES [PREFERENCES] ([preference_id])
+ALTER TABLE [SETTINGS] ADD FOREIGN KEY ([user_id]) REFERENCES [USERS] ([user_id])
 GO
 
-ALTER TABLE [AVAILABILITY] ADD FOREIGN KEY ([user_id]) REFERENCES [USERS] ([user_id])
+ALTER TABLE [SETTINGS] ADD FOREIGN KEY ([day_id]) REFERENCES [DAYS] ([day_id])
 GO
 
-ALTER TABLE [AVAILABILITY] ADD FOREIGN KEY ([day_id]) REFERENCES [DAYS] ([day_id])
+ALTER TABLE [SETTINGS] ADD FOREIGN KEY ([preference_id]) REFERENCES [PREFERENCES] ([preference_id])
 GO
 
 ALTER TABLE [EVENTS] ADD FOREIGN KEY ([cuisine_id]) REFERENCES [CUISINES] ([cuisine_id])
@@ -162,3 +159,5 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
+
+SELECT role_id FROM USERS WHERE user_email = ivanv@bbd.co.za

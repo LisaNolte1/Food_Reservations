@@ -31,17 +31,18 @@ namespace FoodApp.Controllers.Utility
         //    return View();
         //}
 
-        public static string GetMailingList()
+        public static List<string> GetMailingList()
         {
             var db = new DbContext();
             string readStatement = "SELECT user_email FROM USERS";
             var result = db.ExecuteQuery(readStatement, null).Rows;
-            
+            List<string> emails = new List<string>();
             foreach (DataRow row in result) 
             {
                 Debug.WriteLine(row[0]);
+                emails.Add(row[0].ToString());
             }
-            return result.ToString();
+            return emails;
         }
     }
 }

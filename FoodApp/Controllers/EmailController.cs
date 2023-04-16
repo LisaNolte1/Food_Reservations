@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using FoodApp.Controllers.Utility;
 using System.IO;
 using System.Net.Mime;
+using System.Diagnostics;
 
 namespace FoodApp.Controllers
 {
@@ -25,14 +26,12 @@ namespace FoodApp.Controllers
         [HttpGet]
         public ActionResult sendEmails()
         {
-            string mailingList = MainUtility.GetMailingList();
-            ViewData["MailingList"] = mailingList;
-
-            List<string> emails = new List<string>();
-            emails.Add("ivanblizz23@gmail.com");
-            emails.Add("slpotgieter1@gmail.com");
-            foreach(string email in emails)
+            List<string> emails = MainUtility.GetMailingList();
+            ViewData["MailingList"] = emails;
+            foreach (string email in emails)
             {
+                Debug.WriteLine("===================");
+                Debug.WriteLine(email);
                 using (MailMessage mail = new MailMessage())
                 {
                     mail.From = new MailAddress(noreplyEmail);

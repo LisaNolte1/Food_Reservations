@@ -28,6 +28,8 @@ namespace FoodApp.Controllers
             string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
             Debug.WriteLine(userfullname);
             Debug.WriteLine(emailAddress);
+
+
             if (model != null)
             {
                 //Console.Beep();
