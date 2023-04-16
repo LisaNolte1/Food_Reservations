@@ -52,7 +52,7 @@ namespace FoodApp.Controllers
 
         public ActionResult SaveEvent(Models.Menu model)
         {
-            Debug.WriteLine(model.Date);
+            Debug.WriteLine(model.ExpiryDate);
             Debug.WriteLine(model.CuisineIdThursday);
             Debug.WriteLine(model.CuisineIdWednesday);
             var resp = SaveInternal(model);
@@ -90,14 +90,14 @@ namespace FoodApp.Controllers
                {
                 new SqlParameter("@CuisineIdWednesday", menu.CuisineIdWednesday),
                 new SqlParameter("@DayIdWednesday", 1),
-                new SqlParameter("@EventDate", menu.Date)
+                new SqlParameter("@EventDate", menu.ExpiryDate)
                 };
             parameters.Add(parameters0);
             var parameters1 = new[]
             {
                 new SqlParameter("@CuisineIdThursday", menu.CuisineIdThursday),
                 new SqlParameter("@DayIdThursday", 2),
-                new SqlParameter("@EventDate", menu.Date)
+                new SqlParameter("@EventDate", menu.ExpiryDate)
                 };
             parameters.Add(parameters1);
 

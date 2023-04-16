@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace FoodApp.Controllers
 {
@@ -83,6 +84,7 @@ namespace FoodApp.Controllers
             }     
             
             //Redirect to menu
+            Utility.MainUtility.SetUserPreferences(model);
             return RedirectToAction("/SubmitPreferences");
         }
 

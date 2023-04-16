@@ -6,8 +6,5 @@ namespace FoodApp.Models
     {
         public int PreferenceId { get; set; }
         public string PreferenceType { get; set; }
-
-        public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<Cuisine> Cuisines { get; set; } 
     }
 }

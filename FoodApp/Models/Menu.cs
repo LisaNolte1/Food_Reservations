@@ -12,6 +12,6 @@ namespace FoodApp.Models
         public int CuisineIdWednesday { get; set; }
         
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public DateTime ExpiryDate { get; set; }
     }
 }

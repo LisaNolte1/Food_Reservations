@@ -60,10 +60,10 @@ CREATE TABLE [PREFERENCES] (
 GO
 
 CREATE TABLE [BOOKINGS] (
-  [booking_id] integer PRIMARY KEY,
+  [booking_id] integer IDENTITY(1,1) PRIMARY KEY,
   [user_id] integer,
   [event_id] integer,
-  [date] date
+  [cuisine_options_id] integer,
 )
 GO
 
@@ -97,6 +97,9 @@ ALTER TABLE [BOOKINGS] ADD FOREIGN KEY ([user_id]) REFERENCES [USERS] ([user_id]
 GO
 
 ALTER TABLE [BOOKINGS] ADD FOREIGN KEY ([event_id]) REFERENCES [EVENTS] ([event_id])
+GO
+
+ALTER TABLE [BOOKINGS] ADD FOREIGN KEY ([cuisine_options_id]) REFERENCES [CUISINES_OPTIONS] ([cuisine_options_id])
 GO
 
 ALTER TABLE [CUISINES_OPTIONS] ADD FOREIGN KEY ([cuisine_id]) REFERENCES [CUISINES] ([cuisine_id])
@@ -166,3 +169,4 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
+
