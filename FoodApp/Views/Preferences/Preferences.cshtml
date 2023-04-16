@@ -35,11 +35,20 @@
 
 
     <h2>Question 3:</h2>
-    <p>Which Food?</p>
-    foreach (var item in ViewData["Food"] as List<string>)
+    <p>Which Food for wednesday?</p>
+    foreach (var item in ViewData["wednesdayOptions"] as List<KeyValuePair<int,string>>)
     {
         <div>
-            @Html.RadioButtonFor(model => model.Food, @item)<label>@item</label>
+            @Html.RadioButtonFor(model => model.wedFood, @item.Key)<label>@item.Value</label>
+        </div>
+    }
+    
+    <h2>Question 4:</h2>
+    <p>Which Food for Thursday?</p>
+    foreach (var item in ViewData["thursdayOptions"] as List<KeyValuePair<int,string>>)
+    {
+        <div>
+            @Html.RadioButtonFor(model => model.thursFood, @item.Key)<label>@item.Value</label>
         </div>
     }
 
