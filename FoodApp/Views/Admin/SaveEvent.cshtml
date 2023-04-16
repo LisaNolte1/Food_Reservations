@@ -5,3 +5,16 @@
 
 <h2>@ViewData["title"]</h2>
 <h2>@ViewData["error"]</h2>
+
+
+@if (ViewData["success"].ToString() == true.ToString())
+{
+
+
+    <a href="https://localhost:44337/Email/sendEmails"><button>Send Emails</button></a>
+}
+else
+{
+    <a href="https://localhost:44337/Admin/"><button>Try again</button></a>
+}
+
