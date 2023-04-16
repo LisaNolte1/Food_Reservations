@@ -1,3 +1,14 @@
+CREATE DATABASE [FoodApp]
+GO
+
+USE [FoodApp]
+GO
+
+--DONT TOUCH
+--USE master
+--DROP DATABASE [FoodApp]
+--GO
+
 CREATE TABLE [USERS] (
   [user_id] integer PRIMARY KEY,
   [user_email] nvarchar(255),
@@ -99,13 +110,42 @@ INSERT INTO [dbo].[CUISINES]
 		   (2, 'Rockmamas')
 GO
 
+INSERT INTO [dbo].[ROLES]
+           ([role_id]
+           ,[role_name])
+     VALUES
+           (1, 'Guest'),
+		   (2, 'Administrator')
+GO
+
 INSERT INTO [dbo].[PREFERENCES]
            ([preference_id]
            ,[preference_type])
      VALUES
+		   (1, 'Vegetarian'),
            (2, 'Halal'),
 		   (3, 'Vegan'),
 		   (4, 'None')
+GO
+
+
+
+INSERT INTO [dbo].[DAYS]
+           ([day_id]
+           ,[day_name])
+     VALUES
+           (1, 'Wednesday'),
+		   (2, 'Thursday'),
+		   (3, 'Both'),
+		   (4, 'None')
+GO
+
+INSERT INTO [dbo].[USERS]
+           ([user_email], [preference_id]
+           ,[role_id])
+     VALUES
+           ('ivanv@bbd.co.za', 3, 2),
+		   ('lisan@bbd.co.za', 4, 2)
 GO
 
 INSERT INTO [dbo].[CUISINES_OPTIONS]
@@ -122,3 +162,6 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
+
+
+
