@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -43,16 +45,36 @@ namespace FoodApp.Controllers
                 Days.Add(new KeyValuePair<int, string>((int)result[0], result[1].ToString()));
             }
             ViewData["Days"] = Days;
-
-
             return View();
         }
 
-        public ActionResult SaveEvent(Event model)
+        public ActionResult SaveEvent(Menu model)
         {
             Debug.WriteLine(model.Date);
-            Debug.WriteLine(model.CuisineId);
+            Debug.WriteLine(model.CuisineIdThursday);
+            Debug.WriteLine(model.CuisineIdWednesday);
+            var resp = SaveInternal(model);
+            if (!resp)
+            {
+                ViewData["title"] = "Fail";
+            }
             return View();
+        }
+
+        private bool SaveInternal(Menu menu)
+        {
+            try 
+            {
+                var db = new DbContext();
+                db.ExecuteQuery($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdWednesday}, {1}, {menu.Date});", null);
+                db.ExecuteQuery($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdThursday}, {2}, {menu.Date});", null);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                ViewData["error"] = ex.Message;
+                return false;
+            }
         }
     }
 }

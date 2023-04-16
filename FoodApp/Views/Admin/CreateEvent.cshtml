@@ -1,22 +1,22 @@
-﻿@model FoodApp.Models.Event
+﻿@model FoodApp.Models.Menu
 
 @using (Html.BeginForm("SaveEvent", "Admin", FormMethod.Post))
 {
-    <p>Which Cuisnes?</p>
+    <p>Wednesdays choice?</p>
     foreach (KeyValuePair<int, string> item in ViewData["Cuisines"] as List<KeyValuePair<int, string>>
     )
     {
         <div>
-            @Html.RadioButtonFor(model => model.CuisineId, @item.Key)<label>@item.Value</label>
+            @Html.RadioButtonFor(model => model.CuisineIdThursday, @item.Key)<label>@item.Value</label>
         </div>
     }
 
-    <p>Which Days?</p>
-    foreach (KeyValuePair<int, string> item in ViewData["Days"] as List<KeyValuePair<int, string>>
+    <p>Thursdays choice?</p>
+    foreach (KeyValuePair<int, string> item in ViewData["Cuisines"] as List<KeyValuePair<int, string>>
     )
     {
         <div>
-            @Html.RadioButtonFor(model => model.DayId, @item.Key)<label>@item.Value</label>
+            @Html.RadioButtonFor(model => model.CuisineIdWednesday, @item.Key)<label>@item.Value</label>
         </div>
     }
 

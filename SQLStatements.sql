@@ -44,7 +44,7 @@ CREATE TABLE [SETTINGS](
 GO
 
 CREATE TABLE [EVENTS] (
-  [event_id] integer PRIMARY KEY,
+  [event_id] integer IDENTITY(1,1) PRIMARY KEY,
   [cuisine_id] integer,
   [day_id] integer,
   [date] date

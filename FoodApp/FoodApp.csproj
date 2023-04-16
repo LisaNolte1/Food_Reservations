@@ -214,6 +214,7 @@
     <Compile Include="Models\Cuisine.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Preference.cs" />
     <Compile Include="Models\FormSelection.cs" />
     <Compile Include="Models\Role.cs" />
