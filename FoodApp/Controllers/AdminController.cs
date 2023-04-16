@@ -56,7 +56,7 @@ namespace FoodApp.Controllers
             var resp = SaveInternal(model);
             if (!resp)
             {
-                ViewData["title"] = "Fail";
+                ViewData["itle"] = "Fail";
             }
             return View();
         }
@@ -66,13 +66,27 @@ namespace FoodApp.Controllers
             try 
             {
                 var db = new DbContext();
-                db.ExecuteQuery($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdWednesday}, {1}, {menu.Date});", null);
-                db.ExecuteQuery($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdThursday}, {2}, {menu.Date});", null);
+                var parameters = new[]
+                {
+                new SqlParameter("@CuisineIdWednesday", menu.CuisineIdWednesday),
+                new SqlParameter("@DayIdWednesday", 1),
+                new SqlParameter("@EventDate", menu.Date)
+                };
+                var parameters1 = new[]
+                {
+                new SqlParameter("@CuisineIdThursday", menu.CuisineIdThursday),
+                new SqlParameter("@DayIdThursday", 2),
+                new SqlParameter("@EventDate", menu.Date)
+                };
+                Debug.WriteLine($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdThursday}, {2}, {menu.Date});");
+                Debug.WriteLine($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdWednesday}, {1}, {menu.Date});");
+                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date) VALUES (@CuisineIdWednesday, @DayIdWednesday, CONVERT (date, @EventDate, 101))", parameters);
+                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date) VALUES (@CuisineIdThursday, @DayIdThursday, CONVERT (date, @EventDate, 101))", parameters1);
                 return true;
             }
             catch(Exception ex)
             {
-                ViewData["error"] = ex.Message;
+                ViewData["error"] = ex;
                 return false;
             }
         }

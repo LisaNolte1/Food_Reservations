@@ -47,7 +47,7 @@ CREATE TABLE [EVENTS] (
   [event_id] integer IDENTITY(1,1) PRIMARY KEY,
   [cuisine_id] integer,
   [day_id] integer,
-  [date] date
+  [event_date] date
 )
 GO
 
