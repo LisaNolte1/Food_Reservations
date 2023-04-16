@@ -12,7 +12,7 @@ GO
 CREATE TABLE [USERS] (
   [user_id] integer IDENTITY(1,1) PRIMARY KEY,
   [user_email] nvarchar(255),
-  [role_id] integer
+  [role_id] integer,
 )
 GO
 
@@ -132,8 +132,6 @@ INSERT INTO [dbo].[PREFERENCES]
 		   (4, 'None')
 GO
 
-
-
 INSERT INTO [dbo].[DAYS]
            ([day_id]
            ,[day_name])
@@ -145,11 +143,12 @@ INSERT INTO [dbo].[DAYS]
 GO
 
 INSERT INTO [dbo].[USERS]
-           ([user_email], [preference_id]
+           ([user_email]
            ,[role_id])
      VALUES
-           ('ivanv@bbd.co.za', 3, 2),
-		   ('lisan@bbd.co.za', 4, 2)
+           ('ivanv@bbd.co.za', 2),
+		   ('lisan@bbd.co.za', 2),
+		   ('stephenp@bbd.co.za', 2)
 GO
 
 INSERT INTO [dbo].[CUISINES_OPTIONS]
