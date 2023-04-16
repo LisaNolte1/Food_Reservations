@@ -46,13 +46,42 @@ namespace FoodApp.Controllers
         [Authorize]
         public ActionResult SavePreferences(FormSelection model)
         {
+
             string userfullname = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
             string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
             Debug.WriteLine(userfullname);
             Debug.WriteLine(emailAddress);
-            ////////////////////////////////////////////////////////
-            
 
+            var db = new DbContext();
+            string userQuery = $"SELECT user_id FROM Users WHERE user_email = '{emailAddress}'";
+            var userResult = db.ExecuteQuery(userQuery, null);
+            DataRow res1 = userResult.Rows[0];
+            int userId = res1.Field<int>("user_id");
+     
+            string prefQuery = $"SELECT preference_id FROM Preferences WHERE preference_type = '{model.DietaryRequirements.ToString()}'";
+            var prefResult = db.ExecuteQuery(prefQuery, null);
+            DataRow res2 = prefResult.Rows[0];
+            int preferenceId = res2.Field<int>("preference_id");
+
+            string daysQuery = $"SELECT day_id FROM Days WHERE day_name = '{model.Days.ToString()}'";
+            var daysResult = db.ExecuteQuery(daysQuery, null);
+            DataRow res3 = daysResult.Rows[0];
+            int dayId = res3.Field<int>("day_id");
+
+            // check if we should update or insert
+            string checkQuery = $"SELECT COUNT(*) FROM Settings WHERE user_id = {userId}";
+            var checkResult = db.ExecuteQuery(checkQuery, null);
+            if (checkResult.Rows[0][0] != DBNull.Value && Convert.ToInt32(checkResult.Rows[0][0]) > 0)
+            {
+                string updateQuery = $"UPDATE Settings SET preference_id = {preferenceId}, day_id = {dayId} WHERE user_id = {userId}";
+                var updateResult = db.ExecuteQuery(updateQuery, null);
+            }
+            else
+            {
+                string insertQuery = $"INSERT INTO Settings VALUES ({userId}, {preferenceId}, {dayId})";
+                var insertResult = db.ExecuteQuery(insertQuery, null);
+            }     
+            
             //Redirect to menu
             return RedirectToAction("/SubmitPreferences");
         }

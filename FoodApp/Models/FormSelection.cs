@@ -8,6 +8,6 @@ namespace FoodApp.Models
         public string wedFood { get; set; }
         public string thursFood { get; set; }
 
-
+    
     }
 }
