@@ -10,7 +10,7 @@ GO
 --GO
 
 CREATE TABLE [USERS] (
-  [user_id] integer PRIMARY KEY,
+  [user_id] integer IDENTITY(1,1) PRIMARY KEY,
   [user_email] nvarchar(255),
   [preference_id] integer,
   [role_id] integer
@@ -162,6 +162,3 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
-
-
-

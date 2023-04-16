@@ -6,7 +6,7 @@ namespace FoodApp
 {
     public class DbContext : IDisposable
     {
-        private readonly string connectionString = "data source={serverName}; database={databaseName}; User ID ={username};Password={password};Integrated Security=SSPI";
+        private readonly string connectionString = "data source=LISANO; database=FoodApp; User ID =259;Password=;Integrated Security=SSPI";
         private readonly SqlConnection connection;
 
         public DbContext()

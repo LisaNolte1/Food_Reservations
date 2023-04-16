@@ -12,7 +12,7 @@ namespace FoodApp.Controllers
         public string getAdminEmail()
         {
             //this will need to be dynamic (query that finds and return admin's email)
-            return "stephenp@bbd.co.za";
+            return "lisan@bbd.co.za";
         }
     }
 }

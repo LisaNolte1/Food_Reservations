@@ -19,11 +19,13 @@ namespace FoodApp.Controllers
         private const string subject = "Lunch Mailer";
         private const string formLink = "https://localhost:44337/Preferences/Preferences";
         // GET: Email
+        
 
         [Route("/sendEmails")]
         [HttpGet]
         public ActionResult sendEmails()
         {
+            MainUtility.GetMailingList();
             List<string> emails = new List<string>();
             emails.Add("ivanblizz23@gmail.com");
             emails.Add("slpotgieter1@gmail.com");
