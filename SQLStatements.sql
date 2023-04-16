@@ -166,3 +166,12 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
+
+INSERT INTO [dbo].[SETTINGS]
+		([user_id],
+		[day_id],
+		[preference_id])
+	VALUES
+	(1,1,1),
+	(2,2,2),
+	(3,2,3)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FoodApp.Models
@@ -14,17 +13,5 @@ namespace FoodApp.Models
         public DateTime EventDate { get; set; }
 
         public int Active { get; set; }
-
-        //public virtual Cuisine Cuisine { get; set; }
-        //public virtual Day Day { get; set; }
-        //public virtual ICollection<Booking> Bookings { get; set; }
-
-        //public Event(int eventId, int cuisineId, int dayId, DateTime date)
-        //{
-        //    this.EventId = eventId;
-        //    this.CuisineId = cuisineId;
-        //    this.DayId = dayId;
-        //    this.Date = date;
-        //}
     }
 }
