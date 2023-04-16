@@ -51,6 +51,13 @@ CREATE TABLE [EVENTS] (
 )
 GO
 
+CREATE TABLE [PREFERENCES] (
+	[preference_id] integer PRIMARY KEY,
+	[preference_type] nvarchar(255)
+
+)
+GO
+
 CREATE TABLE [BOOKINGS] (
   [booking_id] integer PRIMARY KEY,
   [user_id] integer,
@@ -159,5 +166,3 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
-
-SELECT role_id FROM USERS WHERE user_email = ivanv@bbd.co.za
