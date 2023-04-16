@@ -11,7 +11,9 @@ namespace FoodApp.Models
         public int DayId { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public DateTime EventDate { get; set; }
+
+        public int Active { get; set; }
 
         //public virtual Cuisine Cuisine { get; set; }
         //public virtual Day Day { get; set; }

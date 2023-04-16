@@ -80,8 +80,11 @@ namespace FoodApp.Controllers
                 };
                 Debug.WriteLine($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdThursday}, {2}, {menu.Date});");
                 Debug.WriteLine($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdWednesday}, {1}, {menu.Date});");
-                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date) VALUES (@CuisineIdWednesday, @DayIdWednesday, CONVERT (date, @EventDate, 101))", parameters);
-                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date) VALUES (@CuisineIdThursday, @DayIdThursday, CONVERT (date, @EventDate, 101))", parameters1);
+
+                db.ExecuteNonQuery("UPDATE EVENTS SET active = 0", null);
+
+                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date,active) VALUES (@CuisineIdWednesday, @DayIdWednesday, CONVERT (date, @EventDate, 101),1)", parameters);
+                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date,active) VALUES (@CuisineIdThursday, @DayIdThursday, CONVERT (date, @EventDate, 101),1)", parameters1);
                 return true;
             }
             catch(Exception ex)
