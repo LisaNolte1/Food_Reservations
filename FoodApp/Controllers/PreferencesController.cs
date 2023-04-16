@@ -30,11 +30,11 @@ namespace FoodApp.Controllers
             Debug.WriteLine(emailAddress);
             if (model != null)
             {
-                Console.Beep();
+                //Console.Beep();
                 //Save data to database
                 if(model.Food != null)
                 {
-                    Console.Beep();
+                    //Console.Beep();
                 }
             }
             ////////////////////////////////////////////////////////

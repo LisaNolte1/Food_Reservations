@@ -25,7 +25,9 @@ namespace FoodApp.Controllers
         [HttpGet]
         public ActionResult sendEmails()
         {
-            MainUtility.GetMailingList();
+            string mailingList = MainUtility.GetMailingList();
+            ViewData["MailingList"] = mailingList;
+
             List<string> emails = new List<string>();
             emails.Add("ivanblizz23@gmail.com");
             emails.Add("slpotgieter1@gmail.com");

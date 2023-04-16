@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -29,12 +31,17 @@ namespace FoodApp.Controllers.Utility
         //    return View();
         //}
 
-        public static void GetMailingList()
+        public static string GetMailingList()
         {
             var db = new DbContext();
             string readStatement = "SELECT user_email FROM USERS";
-            var result = db.ExecuteQuery(readStatement, null);
-            Console.WriteLine(result);
+            var result = db.ExecuteQuery(readStatement, null).Rows;
+            
+            foreach (DataRow row in result) 
+            {
+                Debug.WriteLine(row[0]);
+            }
+            return result.ToString();
         }
     }
 }
