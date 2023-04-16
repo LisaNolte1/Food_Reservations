@@ -1,6 +1,7 @@
-﻿namespace FoodApp.Models
+﻿
+namespace FoodApp.Models
 {
-    public class PreferenceViewModel
+    public class FormSelection
     {
         public string DietaryRequirements { get; set; }
         public string Days { get; set; }

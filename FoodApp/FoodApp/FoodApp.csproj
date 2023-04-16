@@ -206,7 +206,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Preferences.cs" />
+    <Compile Include="Models\Availability.cs" />
+    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\Cuisine.cs" />
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Preference.cs" />
+    <Compile Include="Models\FormSelection.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

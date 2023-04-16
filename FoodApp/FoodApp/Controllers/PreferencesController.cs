@@ -22,7 +22,7 @@ namespace FoodApp.Controllers
         }
 
         [Authorize]
-        public ActionResult SavePreferences(Preferences model)
+        public ActionResult SavePreferences(FormSelection model)
         {
             string userfullname = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
             string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
