@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using FoodApp.Controllers.Utility;
+using System.Web.Mvc;
 
 namespace FoodApp.Controllers
 {
@@ -13,6 +14,7 @@ namespace FoodApp.Controllers
         public ActionResult createForm()
         {
             ViewData["title"] = "form not created, because we haven't implemented that yet...";
+            MainUtility.GetUserPreferences("lisan@bbd.co.za");
             return View();
         }
     }
