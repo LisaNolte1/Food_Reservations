@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using FoodApp.Models;
 
 namespace FoodApp.Controllers
@@ -48,7 +50,7 @@ namespace FoodApp.Controllers
             return View();
         }
 
-        public ActionResult SaveEvent(Menu model)
+        public ActionResult SaveEvent(Models.Menu model)
         {
             Debug.WriteLine(model.Date);
             Debug.WriteLine(model.CuisineIdThursday);
@@ -61,30 +63,17 @@ namespace FoodApp.Controllers
             return View();
         }
 
-        private bool SaveInternal(Menu menu)
+        private bool SaveInternal(Models.Menu menu)
         {
             try 
             {
                 var db = new DbContext();
-                var parameters = new[]
-                {
-                new SqlParameter("@CuisineIdWednesday", menu.CuisineIdWednesday),
-                new SqlParameter("@DayIdWednesday", 1),
-                new SqlParameter("@EventDate", menu.Date)
-                };
-                var parameters1 = new[]
-                {
-                new SqlParameter("@CuisineIdThursday", menu.CuisineIdThursday),
-                new SqlParameter("@DayIdThursday", 2),
-                new SqlParameter("@EventDate", menu.Date)
-                };
-                Debug.WriteLine($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdThursday}, {2}, {menu.Date});");
-                Debug.WriteLine($"INSERT INTO EVENTS (cuisine_id,day_id,date) VALUES ({menu.CuisineIdWednesday}, {1}, {menu.Date});");
-
+                var parameters = getSQLParameters(menu);
                 db.ExecuteNonQuery("UPDATE EVENTS SET active = 0", null);
 
-                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date,active) VALUES (@CuisineIdWednesday, @DayIdWednesday, CONVERT (date, @EventDate, 101),1)", parameters);
-                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date,active) VALUES (@CuisineIdThursday, @DayIdThursday, CONVERT (date, @EventDate, 101),1)", parameters1);
+                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date,active) VALUES (@CuisineIdWednesday, @DayIdWednesday, CONVERT (date, @EventDate, 101),1)", parameters[0]);
+                db.ExecuteNonQuery("INSERT INTO EVENTS (cuisine_id,day_id,event_date,active) VALUES (@CuisineIdThursday, @DayIdThursday, CONVERT (date, @EventDate, 101),1)", parameters[1]);
+                ViewData["success"] = true;
                 return true;
             }
             catch(Exception ex)
@@ -92,6 +81,27 @@ namespace FoodApp.Controllers
                 ViewData["error"] = ex;
                 return false;
             }
+        }
+
+        private List<SqlParameter[]> getSQLParameters(Models.Menu menu)
+        {
+            List<SqlParameter[]> parameters = new List<SqlParameter[]>();
+            var parameters0 = new[]
+               {
+                new SqlParameter("@CuisineIdWednesday", menu.CuisineIdWednesday),
+                new SqlParameter("@DayIdWednesday", 1),
+                new SqlParameter("@EventDate", menu.Date)
+                };
+            parameters.Add(parameters0);
+            var parameters1 = new[]
+            {
+                new SqlParameter("@CuisineIdThursday", menu.CuisineIdThursday),
+                new SqlParameter("@DayIdThursday", 2),
+                new SqlParameter("@EventDate", menu.Date)
+                };
+            parameters.Add(parameters1);
+
+            return parameters;
         }
     }
 }
