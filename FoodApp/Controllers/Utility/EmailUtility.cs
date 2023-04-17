@@ -2,34 +2,21 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Web;
+using System.Web.Helpers;
 
 namespace FoodApp.Controllers.Utility
 {
     public partial class MainUtility
     {
-        //public ActionResult Index()
-        //{
-        //    var db = new DbContext();
-        //    //Read from DB 
-        //    string readStatement = "SELECT * FROM PREFERENCES";
-        //    var result = db.ExecuteQuery(readStatement, null);
-        //    Console.WriteLine(result);
-
-        //    //Insert/Update/Delete from DB
-        //    var insertResult = db.ExecuteNonQuery("INSERT INTO PREFERENCES (preference_id,preference_type) VALUES (200, test);", null);
-
-        //    //Insert/Update/Delete with parameters from DB
-        //    var parameters = new[]
-        //    {
-        //        new SqlParameter("@Id", 700),
-        //        new SqlParameter("@Type", "Test Preference Type"),
-        //    };
-        //    var res = db.ExecuteNonQuery("INSERT INTO PREFERENCES (preference_id,preference_type) VALUES (@Id, @Type);", parameters);
-
-        //    return View();
-        //}
+        public const string noreplyEmail = "johnnyblancnoreply@gmail.com";
+        private const string subject = "Lunch Mailer";
+        private const string formLink = "https://localhost:44337/Preferences/Preferences";
 
         public static List<string> GetMailingList()
         {
@@ -43,6 +30,50 @@ namespace FoodApp.Controllers.Utility
                 emails.Add(row[0].ToString());
             }
             return emails;
+        }
+
+        public static MailMessage GetMailMessage(string email)
+        {
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(noreplyEmail);
+            mail.To.Add(email);
+            mail.Subject = subject;
+            mail.IsBodyHtml = true;
+            string attachmentName = @"Resources\email.jpeg"; // note lowercase extension
+            string attachmentPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, attachmentName);
+            Attachment picture = new Attachment(attachmentPath, MediaTypeNames.Image.Jpeg);
+            string contentID = "test001@host";
+            picture.ContentId = contentID;
+            mail.Attachments.Add(picture);
+            mail.Body = $"<html>" +
+                        $"<body>" +
+                        $"<a href=\"{formLink}\">" +
+                        $"<img src=\"cid:{contentID}\">" +
+                        "</a>" +
+                        "</body>" +
+                        "</html>";
+
+            return mail;
+        }
+
+        public static bool SendEmail(MailMessage mail)
+        {
+            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+            {
+                smtp.Credentials = new NetworkCredential(MainUtility.noreplyEmail, Authinator.MyAuth);
+                smtp.EnableSsl = true;
+               try
+                {
+                    smtp.Send(mail);
+                    return true;
+                }
+                catch (Exception ex) 
+                {
+                    //log the error here
+                    return false;
+                }
+
+            }
         }
     }
 }
