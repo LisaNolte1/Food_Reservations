@@ -170,3 +170,4 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (7, 2, 4, 'Roco Mamas Chicken Burger')
 GO
 
+SELECT * FROM bo.[BOOKINGS]
