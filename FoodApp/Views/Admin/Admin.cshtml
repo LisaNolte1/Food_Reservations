@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    int totalUsers = 100;
+    int totalOrders = 80;
+    string busiestDay = "tuesday";
+}
+
+<h2>THIS IS THE ADMIN PAGE</h2>
+
+
+<div class="">
+    <h3>Statistics</h3>
+</div>
+
+<table class="table">
+   
+    <tr>
+        <td>Total Users</td>
+        <td>@totalUsers</td>
+    </tr>
+    <tr>
+        <td>Total Orders</td>
+        <td>@totalOrders</td>
+    </tr>
+    <tr>
+        <td>Busiest Day</td>
+        <td>@busiestDay</td>
+    </tr>
+</table>
+
+<a href="https://localhost:44337/Admin/CreateEvent"><button class="btn btn-primary">Create New Menu</button></a>

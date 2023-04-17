@@ -1,0 +1,46 @@
+
+@{
+    ViewBag.Title = "Home Page";
+    string email = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
+    var userController = new FoodApp.Controllers.UsersController();
+    string username = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
+}
+
+<div class="jumbotron">
+    <p class="text-center">Welcome @username</p>
+</div>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign-In with Microsoft Guide</title>
+</head>
+<body>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("See Your Claims", "Index", "Claims")
+        <br /><br />
+        @Html.ActionLink("Sign out", "SignOut", "Home")
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
+    {
+        <div style="background-color:red;color:white;font-weight: bold;">Error: @Request.QueryString["errormessage"]</div>
+    }
+    
+    <div class="center-block text-center">
+    <div>
+        @if (userController.getAdmin())
+        {
+            @Html.ActionLink("Go to Admin", "Admin", "Admin", null, new { @class = "large" })
+        }
+
+    </div>
+    <div class="margin-top-twenty">
+        @Html.ActionLink("Capture/Edit Preferences", "Preferences", "Preferences", null, new { @class = "large" })
+    </div>
+
+
+</div>
+</body>
+</html>
