@@ -63,11 +63,7 @@ namespace FoodApp.Controllers
             var prefResult = db.ExecuteQuery(prefQuery, null);
             DataRow res2 = prefResult.Rows[0];
             int preferenceId = res2.Field<int>("preference_id");
-
-            string daysQuery = $"SELECT day_id FROM Days WHERE day_name = '{model.Days.ToString()}'";
-            var daysResult = db.ExecuteQuery(daysQuery, null);
-            DataRow res3 = daysResult.Rows[0];
-            int dayId = res3.Field<int>("day_id");
+            int dayId = model.Days;
 
             // check if we should update or insert
             string checkQuery = $"SELECT COUNT(*) FROM Settings WHERE user_id = {userId}";
