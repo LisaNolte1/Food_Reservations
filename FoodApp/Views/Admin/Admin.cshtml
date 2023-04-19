@@ -14,38 +14,33 @@
     <hr />
 
     <div class="row">
-        <table class="table table-dark table-hover">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Dietary Preference</th>
-                    <th scope="col">Cuisine Option</th>
+                    <th scope="col">Event ID</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">User Email</th>
+                    <th scope="col"></th>
+                    <th scope="col">Cuisine</th>
+                    <th scope="col">Option</th>
+                    <th scope="col">Preference</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>user1</td>
-                    <td>accepted</td>
-                    <td>halaal</td>
-                    <td>chicken burger</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>user2</td>
-                    <td>rejected</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>user3</td>
-                    <td>accepted</td>
-                    <td>basic</td>
-                    <td>rib burger</td>
-                </tr>
+                @for (var i = 0; i < Model.eventIds.Length; i++)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@Model.eventIds[i]</td>
+                        <td>@Model.eventDates[i]</td>
+                        <td>@Model.userEmails[i]</td>
+                        <td></td>
+                        <td>@Model.cuisineNames[i]</td>
+                        <td>@Model.cuisineOptions[i]</td>
+                        <td>@Model.dietaryPreferences[i]</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
