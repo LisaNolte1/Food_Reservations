@@ -19,6 +19,30 @@ namespace FoodApp.Controllers
 
         public ActionResult Admin()
         {
+            // THIS IS JUST FOR REFERENCE, THIS IS NOT THE FINAL CONTROLLER.
+            // Fetch DB context
+            var dbContext = new DbContext();
+
+            // Query the database to get the data for the bar chart
+            string barChartQuery = "SELECT CUISINES_OPTIONS.cuisine_option_name, COUNT(*) as num_bookings FROM BOOKINGS JOIN CUISINES_OPTIONS ON BOOKINGS.cuisine_options_id = CUISINES_OPTIONS.cuisine_options_id GROUP BY CUISINES_OPTIONS.cuisine_option_name";
+            var barChartResult = dbContext.ExecuteQuery(barChartQuery, null).Rows;
+
+            // Create a list of objects to store the data
+            var chartData = new List<object>();
+
+            foreach (DataRow row in barChartResult)
+            {
+                var data = new
+                {
+                    cuisine_option_name = row["cuisine_option_name"].ToString(),
+                    num_bookings = row["num_bookings"]
+                };
+                chartData.Add(data);
+            }
+
+            // Pass data to the view using ViewBag
+            ViewBag.ChartData = chartData;
+
             return View();
         }
 
@@ -45,7 +69,7 @@ namespace FoodApp.Controllers
 
         private bool SaveInternal(Models.Menu menu)
         {
-            try 
+            try
             {
                 MainUtility.SaveEventUtil(menu);
                 ViewData["success"] = true;
