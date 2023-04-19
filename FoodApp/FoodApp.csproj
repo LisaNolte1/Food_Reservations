@@ -206,6 +206,8 @@
     <Compile Include="Controllers\Utility\LoginUtility.cs" />
     <Compile Include="Controllers\Utility\PreferenceUtility.cs" />
     <Compile Include="DbContext.cs" />
+    <Compile Include="EventHandlers\Args\NewEmailAddedEventArgs.cs" />
+    <Compile Include="EventHandlers\NewEmailAddedEventHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
