@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Admin";
-}
+﻿@model FoodApp.Models.AdminStatistics
 
 <div class="container">
     <div class="row">
@@ -70,7 +68,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    Bar Chart
+                    <h3>Popular Cuisine Options</h3>
                 </div>
                 <div class="card-body">
                     <canvas class="" id="barChart"></canvas>
@@ -81,7 +79,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    Pie Chart
+                    <h3>Dietary Preference Breakdown</h3>
                 </div>
                 <div class="card-body">
                     <canvas class="" id="pieChart"></canvas>
@@ -96,7 +94,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Line Chart
+                    <h3>Event Bookings</h3>
                 </div>
                 <div class="card-body">
                     <canvas class="" id="lineChart"></canvas>
@@ -119,16 +117,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-wOLiP6uL5tNrV1FiutKtAyQGGJ1CWAsqQ6Kp2XZ12/CvZxw8MvNJfdhh0yTwjPIir4SWag2/MHrseR7PRmNtvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/javascript">
-        const barChart = document.getElementById('barChart').getContext('2d');
+        // Extract data from the model and encode as JSON
+        const barChartLabels = @Html.Raw(Json.Encode(Model.barChartLabels));
+        const barChartData = @Html.Raw(Json.Encode(Model.barChartData));
+        const pieChartLabels = @Html.Raw(Json.Encode(Model.pieChartLabels));
+        const pieChartData = @Html.Raw(Json.Encode(Model.pieChartData));
+        const lineChartLabels = @Html.Raw(Json.Encode(Model.lineChartLabels));
+        const lineChartData = @Html.Raw(Json.Encode(Model.lineChartData));
 
-        var myBarChart = new Chart(barChart, {
+        // Set up the bar chart
+        const barChart = document.getElementById('barChart').getContext('2d');
+        const myBarChart = new Chart(barChart, {
             type: 'bar',
             data: {
-                labels: ['001', '002', '003'],
+                labels: barChartLabels,
                 datasets: [{
-                    label: '# of Bookings',
-                    data: [100, 200, 300], 
-                    backgroundcolor: 'rgb(6, 128, 250)',
+                    label: 'Number of Bookings',
+                    data: barChartData,
+                    backgroundColor: '#090e3b',
+                    borderColor: '#f5f5f5',
+                    borderWidth: 1
                 }]
             },
             options: {
@@ -136,60 +144,99 @@
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
+                        },
+                        gridLines: {
+                            color: '#f5f5f5'
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#f5f5f5'
                         }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#090e3b'
+                    }
                 }
             }
-        })
-    </script>
+        });
 
-    <script type="text/javascript">
+        // Set up the pie chart
         const pieChart = document.getElementById('pieChart').getContext('2d');
-
-        var myPieChart = new Chart(pieChart, {
+        const myPieChart = new Chart(pieChart, {
             type: 'pie',
             data: {
-                labels: ['001', '002', '003'],
+                labels: pieChartLabels,
                 datasets: [{
                     label: 'Pie Chart',
-                    data: [100, 200, 300],
-                    backgroundcolor: 'rgb(6, 128, 250)',
+                    data: pieChartData,
+                    backgroundColor: ['#090e3b', '#c80000', '#f5f5f5']
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                legend: {
+                    labels: {
+                        fontColor: '#090e3b'
+                    }
                 }
             }
-        })
-    </script>
+        });
 
-    <script type="text/javascript">
+        // Set up the line chart
         const lineChart = document.getElementById('lineChart').getContext('2d');
-
-        var myLineChart = new Chart(lineChart, {
+        const myLineChart = new Chart(lineChart, {
             type: 'line',
             data: {
-                labels: ['001', '002', '003'],
+                labels: lineChartLabels,
                 datasets: [{
                     label: 'Line Chart',
-                    data: [100, 200, 300],
-                    backgroundcolor: 'rgb(6, 128, 250)',
+                    data: lineChartData,
+                    backgroundColor: '#f5f5f5',
+                    borderColor: '#c80000',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#090e3b',
+                    pointRadius: 4
                 }]
             },
             options: {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            fontColor: '#090e3b'
+                        },
+                        gridLines: {
+                            color: '#f5f5f5'
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Number of Bookings',
+                            fontColor: '#090e3b'
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#f5f5f5'
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Event Number',
+                            fontColor: '#090e3b'
                         }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#090e3b',
+                        text: 'Number of Bookings'
+                    }
                 }
             }
-        })
+        });
+
+
+
     </script>
 }
