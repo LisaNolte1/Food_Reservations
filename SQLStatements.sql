@@ -12,6 +12,7 @@ GO
 CREATE TABLE [USERS] (
   [user_id] integer IDENTITY(1,1) PRIMARY KEY,
   [user_email] nvarchar(255),
+  [preference_id] integer,
   [role_id] integer,
 )
 GO
@@ -35,7 +36,6 @@ CREATE TABLE [CUISINES] (
 )
 GO
 
-
 CREATE TABLE [SETTINGS](
 	[user_id] integer PRIMARY KEY,
 	[day_id] integer,
@@ -55,7 +55,6 @@ GO
 CREATE TABLE [PREFERENCES] (
 	[preference_id] integer PRIMARY KEY,
 	[preference_type] nvarchar(255)
-
 )
 GO
 
@@ -74,6 +73,8 @@ CREATE TABLE [CUISINES_OPTIONS] (
   [cuisine_option_name] nvarchar(255)
 )
 GO
+
+ALTER TABLE [USERS] ADD FOREIGN KEY ([preference_id]) REFERENCES [PREFERENCES] ([preference_id])
 
 ALTER TABLE [USERS] ADD FOREIGN KEY ([role_id]) REFERENCES [ROLES] ([role_id])
 GO
@@ -115,7 +116,8 @@ INSERT INTO [dbo].[CUISINES]
            ,[cuisine_name])
      VALUES
            (1, 'KFC'),
-		   (2, 'Rockmamas')
+		   (2, 'Rockmamas'),
+		   (3, 'Mexican')
 GO
 
 INSERT INTO [dbo].[ROLES]
@@ -147,12 +149,14 @@ INSERT INTO [dbo].[DAYS]
 GO
 
 INSERT INTO [dbo].[USERS]
-           ([user_email]
-           ,[role_id])
+           ([user_email], [preference_id], [role_id])
      VALUES
-           ('ivanv@bbd.co.za', 2),
-		   ('lisan@bbd.co.za', 2),
-		   ('stephenp@bbd.co.za', 2)
+           ('ivanv@bbd.co.za', 1, 2), --vegetarian
+		   ('lisan@bbd.co.za', 2, 2), --halal
+		   ('stephenp@bbd.co.za', 3, 2), --vegan
+		   ('karl@bbd.co.za', 4, 2), --none
+		   ('ryanp@bbd.co.za', 4, 2), --none
+		   ('bonga@bbd.co.za', 4, 2) --none
 GO
 
 INSERT INTO [dbo].[CUISINES_OPTIONS]
@@ -167,7 +171,38 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 		   (4, 2, 2, 'Roco Mamas Halal Pizza'),
 		   (5, 2, 3, 'Roco Mamas Vegan Burger '),
 		   (6, 2, 4, 'Roco Mamas Beef Burger'),
-		   (7, 2, 4, 'Roco Mamas Chicken Burger')
+		   (7, 2, 4, 'Roco Mamas Chicken Burger'),
+		   (8, 3, 1, 'Vegetarian Wraps'),
+		   (9, 3, 2, 'Halal Tacos'),
+		   (10, 3, 3, 'Vegan Nachos'),
+		   (11, 3, 4, 'Beef Quesadilla')
 GO
 
-SELECT * FROM bo.[BOOKINGS]
+INSERT INTO [dbo].[EVENTS]
+			([cuisine_id], [day_id])
+			VALUES
+			(1, 2),
+			(2, 1),
+			(3, 1)
+
+INSERT INTO [dbo].[BOOKINGS]
+			([user_id], [event_id], [cuisine_options_id])
+			VALUES
+			(1, 1, 2),
+			(2, 1, 2),
+			(3, 1, 2),
+			(4, 1, 3),
+			(5, 1, 1),
+			(6, 1, 2),
+			(1, 2, 5),
+			(2, 2, 5),
+			(3, 2, 5),
+			(4, 2, 6),
+			(5, 2, 7),
+			(6, 2, 6),
+			(1, 3, 8),
+			(2, 3, 9),
+			(3, 3, 10),
+			(4, 3, 11),
+			(5, 3, 11),
+			(6, 3, 11)
