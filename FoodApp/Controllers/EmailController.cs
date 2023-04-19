@@ -15,12 +15,6 @@ namespace FoodApp.Controllers
     [Route("/Email")]
     public class EmailController : Controller
     {
-        public EmailController() 
-        {
-            var a = new AdminController();
-            a.NewEmailAdded += a_NewEmailAdded;
-        }
-
         // GET: Email
         [Route("/sendEmails")]
         [HttpGet]
@@ -48,11 +42,6 @@ namespace FoodApp.Controllers
             
             return View();
 
-        }
-
-        static void a_NewEmailAdded(object sender, NewEmailAddedEventArgs e) { 
-            MailMessage mail = MainUtility.GetMailMessage(e.Email);
-            MainUtility.SendEmail(mail);
         }
     }
 }

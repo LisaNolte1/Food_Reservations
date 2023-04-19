@@ -1,1 +1,0 @@
-﻿public delegate void NewEmailAddedEventHandler(object sender, NewEmailAddedEventArgs e);

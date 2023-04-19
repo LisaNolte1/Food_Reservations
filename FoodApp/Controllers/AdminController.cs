@@ -16,13 +16,6 @@ namespace FoodApp.Controllers
 {
     public class AdminController : Controller
     {
-        public event NewEmailAddedEventHandler NewEmailAdded;
-        protected virtual void OnNewEmailAdded(string email)
-        {
-            NewEmailAddedEventArgs newEmailAddedEventArgs = new NewEmailAddedEventArgs();
-            newEmailAddedEventArgs.Email = email;
-            NewEmailAdded?.Invoke(this, newEmailAddedEventArgs);
-        }
 
         public ActionResult Admin()
         {
