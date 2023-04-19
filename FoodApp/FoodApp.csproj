@@ -209,6 +209,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminStatistics.cs" />
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Cuisine.cs" />
