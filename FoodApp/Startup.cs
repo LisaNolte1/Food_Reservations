@@ -8,6 +8,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Microsoft.Owin.Security.Notifications;
+using FoodApp.Controllers.Utility;
+using FoodApp.EventHandlers;
 
 [assembly: OwinStartup(typeof(FoodApp.Startup))]
 
@@ -26,6 +28,8 @@ namespace FoodApp
 
         // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
+
+        EventQueue ev = EventQueue.GetInstance();
 
         /// <summary>
         /// Configure OWIN to use OpenIdConnect 

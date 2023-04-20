@@ -8,6 +8,7 @@ using FoodApp.Controllers.Utility;
 using System.IO;
 using System.Net.Mime;
 using System.Diagnostics;
+using FoodApp.EventHandlers;
 
 namespace FoodApp.Controllers
 {
@@ -29,22 +30,26 @@ namespace FoodApp.Controllers
             ViewData["MailingList"] = emails;
             foreach (string email in emails)
             {
-                MailMessage mail = MainUtility.GetMailMessage(email);
-                using (mail)
-                {
-                    if(MainUtility.SendEmail(mail))
-                    {
-                        
-                        ViewData["Title"] = "Email sent!";
-                    }
-                    else
-                    {
-                        ViewData["Title"] = "Email Failed to send!";
-                        ViewData["error"] = ViewData["error"].ToString() + '\n' + email;
-                    }
-                }
+                EventQueue.Add(email);
             }
-            
+            //foreach (string email in emails)
+            //{
+            //    MailMessage mail = MainUtility.GetMailMessage(email);
+            //    using (mail)
+            //    {
+            //        if(MainUtility.SendEmail(mail))
+            //        {
+                        
+            //            ViewData["Title"] = "Email sent!";
+            //        }
+            //        else
+            //        {
+            //            ViewData["Title"] = "Email Failed to send!";
+            //            ViewData["error"] = ViewData["error"].ToString() + '\n' + email;
+            //        }
+            //    }
+            //}
+
             return View();
 
         }

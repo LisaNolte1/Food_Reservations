@@ -1,4 +1,5 @@
 ﻿using FoodApp.Controllers.Utility;
+using FoodApp.EventHandlers;
 using FoodApp.Models;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,9 @@ namespace FoodApp.Controllers
                 NewEmailAddedEventArgs args = new NewEmailAddedEventArgs();
                 args.Email = model.UserEmail;
                 OnNewEmailAdded(args);
-                
+
+                EventQueue.Add(args.Email);
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
