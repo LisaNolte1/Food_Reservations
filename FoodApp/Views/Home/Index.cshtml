@@ -18,7 +18,7 @@
 <body>
     @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink("Add User", "Index", "Users")
+        @Html.ActionLink("Add User", "Users", "Users")
         <br /><br />
         @Html.ActionLink("Sign out", "SignOut", "Home")
     }

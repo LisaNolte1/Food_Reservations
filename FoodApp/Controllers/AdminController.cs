@@ -14,6 +14,7 @@ using FoodApp.Models;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         

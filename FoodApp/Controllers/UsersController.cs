@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         public static event NewEmailAddedEventHandler NewEmailAdded;
@@ -21,7 +22,7 @@ namespace FoodApp.Controllers
             NewEmailAdded?.Invoke(this, e);
         }
 
-        public ViewResult Index()
+        public ViewResult Users()
         {
             //Query to get the roles
             if (didError != null)

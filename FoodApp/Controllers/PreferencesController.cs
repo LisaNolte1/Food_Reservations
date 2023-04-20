@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     public class PreferencesController : Controller
     {
 
