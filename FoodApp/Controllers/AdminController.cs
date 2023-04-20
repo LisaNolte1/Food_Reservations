@@ -21,6 +21,25 @@ namespace FoodApp.Controllers
         {
             var dbContext = new DbContext();
 
+            // Table data
+            var tableQuery = "SELECT e.event_id, e.event_date, u.user_email,c.cuisine_name, co.cuisine_option_name, p.preference_type FROM BOOKINGS b JOIN EVENTS e ON b.event_id = e.event_id AND e.active = 1 JOIN USERS u ON b.user_id = u.user_id JOIN CUISINES_OPTIONS co ON b.cuisine_options_id = co.cuisine_options_id JOIN CUISINES c ON co.cuisine_id = c.cuisine_id JOIN PREFERENCES p ON co.preference_id = p.preference_id";
+            var tableResult = dbContext.ExecuteQuery(tableQuery, null).Rows;
+            var eventIds = new List<int>();
+            var eventDates = new List<DateTime>();
+            var userEmails = new List<string>();
+            var cuisineNames = new List<string>();
+            var cuisineOptions = new List<string>();
+            var dietaryPreferences = new List<string>();
+            foreach (DataRow row in tableResult)
+            {
+                eventIds.Add(Convert.ToInt32(row["event_id"]));
+                eventDates.Add(((DateTime)row["event_date"]).Date);
+                userEmails.Add(row["user_email"].ToString());
+                cuisineNames.Add(row["cuisine_name"].ToString());
+                cuisineOptions.Add(row["cuisine_option_name"].ToString());
+                dietaryPreferences.Add(row["preference_type"].ToString());
+            }
+
             // Bar chart data
             var barChartQuery = "SELECT CUISINES_OPTIONS.cuisine_option_name, COUNT(*) as num_bookings FROM BOOKINGS JOIN CUISINES_OPTIONS ON BOOKINGS.cuisine_options_id = CUISINES_OPTIONS.cuisine_options_id GROUP BY CUISINES_OPTIONS.cuisine_option_name";
             var barChartResult = dbContext.ExecuteQuery(barChartQuery, null).Rows;
@@ -56,6 +75,12 @@ namespace FoodApp.Controllers
 
             var adminStatistics = new AdminStatistics
             {
+                eventIds = eventIds.ToArray(),
+                eventDates = eventDates.ToArray(),
+                userEmails = userEmails.ToArray(),
+                cuisineNames = cuisineNames.ToArray(),
+                cuisineOptions = cuisineOptions.ToArray(),
+                dietaryPreferences = dietaryPreferences.ToArray(),
                 barChartLabels = barChartLabels.ToArray(),
                 barChartData = barChartData.ToArray(),
                 pieChartLabels = pieChartLabels.ToArray(),
@@ -81,7 +106,7 @@ namespace FoodApp.Controllers
             var resp = SaveInternal(model);
             if (!resp)
             {
-                ViewData["itle"] = "Fail";
+                ViewData["Title"] = "Fail";
             }
             return View();
         }
