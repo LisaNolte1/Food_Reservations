@@ -1,50 +1,123 @@
 ﻿
 
 
+
 @model FoodApp.Models.FormSelection
 
-@using (Html.BeginForm("SavePreferences", "Preferences", FormMethod.Post))
-{
-    <h2>Question 1:</h2>
-    <p>Dietry Requirements?</p>
-    @Html.DropDownListFor(model => model.DietaryRequirements, new SelectList(
-                new List<SelectListItem>
-                {
+<style>
+    body {
+        background-color: #f2f2f2;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #f2f2f2;
+    }
+
+    .margin-top-thirty {
+        margin-top: 30px;
+    }
+
+    .margin-left-ten {
+        margin-left: 15px;
+    }
+
+    #page-heading {
+        font-family: 'Pacifico', cursive;
+        font-weight: bold;
+        margin-bottom: 50px;
+    }
+
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        margin-bottom: 100px; /* adjust as needed to match the height of your footer */
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        left: 0; /* add this line to align the footer to the left of the page */
+        width: 100%;
+        height: 80px; /* adjust as needed */
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    img {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+    }
+
+    
+</style>
+
+<div class="form-container">
+
+    @using (Html.BeginForm("SavePreferences", "Preferences", FormMethod.Post))
+    {
+        <h2 id="page-heading" class="margin-top-thirty">
+            Preferences/Weekly Menu
+        </h2>
+
+        <img src="~/pictures/bbdImage.jpg" alt="BBD Image" width="250" height="250">
+
+        <h3>Dietry Requirements</h3>
+        @Html.DropDownListFor(model => model.DietaryRequirements, new SelectList(
+                                      new List<SelectListItem>
+                                      {
         new SelectListItem { Text = "Vegetarian", Value = "1" },
         new SelectListItem { Text = "Halal", Value = "2" },
         new SelectListItem { Text = "Vegan", Value = "3" },
         new SelectListItem { Text = "None", Value = "4" }
-                                                    }, "Value", "Text", Model.DietaryRequirements), new { @class = "form-control" })
+                                                                                                             }, "Value", "Text", Model.DietaryRequirements), new { @class = "form-control" })
 
-    <h2>Question 2:</h2>
-    <p>Which days?</p>
-    @Html.DropDownListFor(model => model.Days, new SelectList(
-                new List<SelectListItem>
-                {
+        <h3>Days</h3>
+
+        @Html.DropDownListFor(model => model.Days, new SelectList(
+                                      new List<SelectListItem>
+                                      {
         new SelectListItem { Text = "Wednesday", Value = "1" },
         new SelectListItem { Text = "Thursday", Value = "2" },
         new SelectListItem { Text = "Both", Value = "3" },
         new SelectListItem { Text = "None", Value = "4" }
-                                                    }, "Value", "Text", Model.Days), new { @class = "form-control" })
+                                                                                                              }, "Value", "Text", Model.Days), new { @class = "form-control" })
 
 
-    <h2>Question 3:</h2>
-    <p>Which Food for wednesday?</p>
-    foreach (var item in ViewData["wednesdayOptions"] as List<KeyValuePair<int, string>>)
-    {
-        <div>
-            @Html.RadioButtonFor(model => model.wedFood, @item.Key)<label>@item.Value</label>
-        </div>
+        <h3>Wednesday Option</h3>
+        foreach (var item in ViewData["wednesdayOptions"] as List<KeyValuePair<int, string>>)
+        {
+            <div class="margin-left-ten">
+                @Html.RadioButtonFor(model => model.wedFood, @item.Key)<label>@item.Value</label>
+            </div>
+        }
+
+        <h3>Thursday Option</h3>
+
+        foreach (var item in ViewData["thursdayOptions"] as List<KeyValuePair<int, string>>)
+        {
+            <div class="margin-left-ten">
+                @Html.RadioButtonFor(model => model.thursFood, @item.Key)<label>@item.Value</label>
+            </div>
+        }
+
+        <input type="submit" value="Submit" />
     }
 
-    <h2>Question 4:</h2>
-    <p>Which Food for Thursday?</p>
-    foreach (var item in ViewData["thursdayOptions"] as List<KeyValuePair<int, string>>)
-    {
-        <div>
-            @Html.RadioButtonFor(model => model.thursFood, @item.Key)<label>@item.Value</label>
-        </div>
-    }
+</div>
 
-    <input type="submit" value="Submit" />
-}
+<footer style="background-color: #333; color: #fff; text-align: center; padding: 20px;">
+</footer>
