@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Antlr.Runtime.Misc;
 using FoodApp.Controllers.Utility;
 using FoodApp.Models;
 
@@ -21,11 +22,7 @@ namespace FoodApp.Controllers
             var dbContext = new DbContext();
 
             //Table Data
-            var tableQuery = "SELECT e.event_id, e.event_date, u.user_email,c.cuisine_name, co.cuisine_option_name, p.preference_type FROM BOOKINGS b JOIN EVENTS e ON b.event_id = e.event_id AND e.active = 1 " +
-                                "JOIN USERS u ON b.user_id = u.user_id " +
-                                "JOIN CUISINES_OPTIONS co ON b.cuisine_options_id = co.cuisine_options_id " +
-                                "JOIN CUISINES c ON co.cuisine_id = c.cuisine_id " +
-                                "JOIN PREFERENCES p ON co.preference_id = p.preference_id";
+            var tableQuery = "SELECT e.event_id, e.event_date, u.user_email,c.cuisine_name, co.cuisine_option_name, p.preference_type FROM BOOKINGS b JOIN EVENTS e ON b.event_id = e.event_id AND e.active = 1 JOIN USERS u ON b.user_id = u.user_id JOIN CUISINES_OPTIONS co ON b.cuisine_options_id = co.cuisine_options_id JOIN CUISINES c ON co.cuisine_id = c.cuisine_id JOIN PREFERENCES p ON co.preference_id = p.preference_id";
 
             var tableResult = dbContext.ExecuteQuery(tableQuery, null).Rows;
             var eventIds = new List<int>();
