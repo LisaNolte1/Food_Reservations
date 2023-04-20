@@ -198,9 +198,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ClaimsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
-    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -281,11 +279,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Form\createForm.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Preferences\Preferences.cshtml" />
     <Content Include="Views\Menu\Menu.cshtml" />
-    <Content Include="Views\Claims\Index.cshtml" />
     <Content Include="Views\Emails\sendEmails.cshtml" />
     <Content Include="Views\Preferences\SubmitPreferences.cshtml" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />

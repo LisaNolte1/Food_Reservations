@@ -1,4 +1,5 @@
-﻿using FoodApp.Controllers.Utility;
+﻿using FoodApp.Controllers;
+using FoodApp.Controllers.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,17 +16,13 @@ namespace FoodApp.EventHandlers
     {
         private EventQueue() {
             EventHearer();
+            UsersController.NewEmailAdded += q_NewEmailAdded;
+            EmailController.NewEmailAdded += q_NewEmailAdded;
         }
 
         private static EventQueue _instance;
         public static event NewEmailAddedEventHandler NewEmailAdded;
         private static Queue<string> emails = new Queue<string>();
-
-        /*protected virtual void OnNewEmailAdded(NewEmailAddedEventArgs e)
-        {
-            Debug.WriteLine("hello there");
-            NewEmailAdded?.Invoke(this, e);
-        }*/
 
         public static EventQueue GetInstance()
         {
@@ -37,9 +34,9 @@ namespace FoodApp.EventHandlers
             return _instance;
         }
 
-        public static void Add(string email)
+        static void q_NewEmailAdded(object sender, NewEmailAddedEventArgs e)
         {
-            emails.Enqueue(email);
+            emails.Enqueue(e.Email);
         }
 
         public static async void EventHearer()

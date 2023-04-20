@@ -18,7 +18,6 @@ namespace FoodApp.Controllers
         private string didError = null;
         protected virtual void OnNewEmailAdded(NewEmailAddedEventArgs e)
         {
-            Debug.WriteLine("hello there");
             NewEmailAdded?.Invoke(this, e);
         }
 
@@ -35,7 +34,6 @@ namespace FoodApp.Controllers
 
         public ActionResult saveUser(UserForm model)
         {
-            Debug.WriteLine(model.UserEmail);
             try
             {
                 var db = new DbContext();
@@ -45,13 +43,10 @@ namespace FoodApp.Controllers
                 args.Email = model.UserEmail;
                 OnNewEmailAdded(args);
 
-                EventQueue.Add(args.Email);
-
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
                 ViewData["error"] = ex.ToString();
                 didError = ex.ToString();
                 return RedirectToAction("Index", "Home");
