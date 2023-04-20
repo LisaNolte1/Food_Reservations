@@ -70,6 +70,7 @@ namespace FoodApp.Controllers.Utility
                 catch (Exception ex) 
                 {
                     //log the error here
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
 

@@ -14,6 +14,7 @@ namespace FoodApp.Controllers
     public class PreferencesController : Controller
     {
 
+        [Authorize]
         public ActionResult Preferences()
         {
             var menu = MainUtility.GetWeeklyMenu();

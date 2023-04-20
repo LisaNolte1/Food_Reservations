@@ -12,6 +12,12 @@ namespace FoodApp.Controllers
 {
     public class UsersController : Controller
     {
+        public static event NewEmailAddedEventHandler NewEmailAdded;
+        protected virtual void OnNewEmailAdded(NewEmailAddedEventArgs e)
+        {
+            Debug.WriteLine("hello there");
+            NewEmailAdded?.Invoke(this, e);
+        }
         public ViewResult Index()
         {
             //Query to get the roles
@@ -19,14 +25,26 @@ namespace FoodApp.Controllers
             return View();
         }
 
-        public void saveUser(UserForm model)
+        public ActionResult saveUser(UserForm model)
         {
             Debug.WriteLine(model.UserEmail);
+            try
+            {
+                var db = new DbContext();
+                string userQuery = $"INSERT INTO USERS (user_email, role_id) VALUES ('{model.UserEmail}', 1);";
+                var userResult = db.ExecuteQuery(userQuery, null);
+                NewEmailAddedEventArgs args = new NewEmailAddedEventArgs();
+                args.Email = model.UserEmail;
+                OnNewEmailAdded(args);
+            }catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                ViewData["error"] = ex.ToString();
+                return RedirectToAction("Index", "Users");
 
-            var db = new DbContext();
-            string userQuery = $"INSERT INTO USERS (user_email, role_id) VALUES ('{model.UserEmail}', 1);";
-            var userResult = db.ExecuteQuery(userQuery, null);
-            Debug.WriteLine(userResult);
+            }
+            
+            return RedirectToAction("Index", "Home");
         }
        
         public bool getAdmin()

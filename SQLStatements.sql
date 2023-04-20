@@ -11,7 +11,7 @@ GO
 
 CREATE TABLE [USERS] (
   [user_id] integer IDENTITY(1,1) PRIMARY KEY,
-  [user_email] nvarchar(255),
+  [user_email] nvarchar(255) UNIQUE,
   [preference_id] integer,
   [role_id] integer,
 )
@@ -201,3 +201,6 @@ INSERT INTO [dbo].[BOOKINGS]
 			(4, 3, 11),
 			(5, 3, 11),
 			(6, 3, 11)
+
+
+SELECT * FROM USERS

@@ -11,7 +11,10 @@
 </head>
 <body style="padding:50px">
     <h3>Save Users</h3>
-
+    <h4>@ViewData["error"]</h4>
+    @if (ViewData["error"] != null){
+        <p>User already exists</p>
+     }
     @using (Html.BeginForm("SaveUser", "Users", FormMethod.Post))
     {
         <p>User Email</p>

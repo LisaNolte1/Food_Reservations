@@ -17,8 +17,7 @@ namespace FoodApp.Controllers
     {
         public EmailController() 
         {
-            var a = new AdminController();
-            a.NewEmailAdded += a_NewEmailAdded;
+            UsersController.NewEmailAdded += a_NewEmailAdded;
         }
 
         // GET: Email
@@ -52,7 +51,8 @@ namespace FoodApp.Controllers
 
         static void a_NewEmailAdded(object sender, NewEmailAddedEventArgs e) { 
             MailMessage mail = MainUtility.GetMailMessage(e.Email);
-            MainUtility.SendEmail(mail);
+            bool ans = MainUtility.SendEmail(mail);
+            Debug.WriteLine($"{ans}");
         }
     }
 }
