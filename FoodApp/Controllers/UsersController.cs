@@ -13,15 +13,22 @@ namespace FoodApp.Controllers
     public class UsersController : Controller
     {
         public static event NewEmailAddedEventHandler NewEmailAdded;
+
+        private string didError = null;
         protected virtual void OnNewEmailAdded(NewEmailAddedEventArgs e)
         {
             Debug.WriteLine("hello there");
             NewEmailAdded?.Invoke(this, e);
         }
+
         public ViewResult Index()
         {
             //Query to get the roles
-
+            if (didError != null)
+            {
+                ViewData["error"] = didError;
+                didError = null;
+            }
             return View();
         }
 
@@ -36,15 +43,19 @@ namespace FoodApp.Controllers
                 NewEmailAddedEventArgs args = new NewEmailAddedEventArgs();
                 args.Email = model.UserEmail;
                 OnNewEmailAdded(args);
-            }catch(Exception ex)
+                
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 ViewData["error"] = ex.ToString();
-                return RedirectToAction("Index", "Users");
+                didError = ex.ToString();
+                return RedirectToAction("Index", "Home");
 
             }
+
             
-            return RedirectToAction("Index", "Home");
         }
        
         public bool getAdmin()
