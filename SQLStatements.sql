@@ -201,6 +201,3 @@ INSERT INTO [dbo].[BOOKINGS]
 			(4, 3, 11),
 			(5, 3, 11),
 			(6, 3, 11)
-
-
-SELECT * FROM USERS
