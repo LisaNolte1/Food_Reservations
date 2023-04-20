@@ -7,7 +7,7 @@ Bonga Duba
 [(@)](https://github.com/)
 
 Ivan Von Staden
-[(@)](https://github.com/)
+[(@IvanVBBD)](https://github.com/IvanVBBD)
 
 Karl Haupt
 [(@KarlHaupt)](https://github.com/KarlHaupt)
@@ -22,4 +22,4 @@ Ryan Parker
 [(@ryanneilparker)](https://github.com/ryanneilparker)
 
 Stephen Potgieter
-[(@)](https://github.com/)
+[(@StephenPotgieter)](https://github.com/StephenPotgieter)

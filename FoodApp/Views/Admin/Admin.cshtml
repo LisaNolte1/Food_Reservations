@@ -1,32 +1,242 @@
-﻿
-@{
-    ViewBag.Title = "Admin";
-    int totalUsers = 100;
-    int totalOrders = 80;
-    string busiestDay = "tuesday";
-}
+﻿@model FoodApp.Models.AdminStatistics
 
-<h2>THIS IS THE ADMIN PAGE</h2>
+<div class="container">
+    <div class="row">
+        <h1>ADMIN DASHBOARD</h1>
+    </div>
 
+    <hr style="border-top: 3px double #8c8b8b" />
 
-<div class="">
-    <h3>Statistics</h3>
+    <div class="row">
+        <h2>Current Event Details</h2>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Dietary Preference</th>
+                    <th scope="col">Cuisine Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>user1</td>
+                    <td>accepted</td>
+                    <td>halaal</td>
+                    <td>chicken burger</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>user2</td>
+                    <td>rejected</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>user3</td>
+                    <td>accepted</td>
+                    <td>basic</td>
+                    <td>rib burger</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <a href="https://localhost:44337/Admin/CreateEvent"><button class="btn btn-primary">Create New Event</button></a>
+    </div>
+
+    <hr style="border-top: 3px double #8c8b8b" />
+
+    <div class="row">
+        <h2>Historic Event Statistics</h2>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Popular Cuisine Options</h3>
+                </div>
+                <div class="card-body">
+                    <canvas class="" id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Dietary Preference Breakdown</h3>
+                </div>
+                <div class="card-body">
+                    <canvas class="" id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Event Bookings</h3>
+                </div>
+                <div class="card-body">
+                    <canvas class="" id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
 </div>
 
-<table class="table">
-   
-    <tr>
-        <td>Total Users</td>
-        <td>@totalUsers</td>
-    </tr>
-    <tr>
-        <td>Total Orders</td>
-        <td>@totalOrders</td>
-    </tr>
-    <tr>
-        <td>Busiest Day</td>
-        <td>@busiestDay</td>
-    </tr>
-</table>
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-wOLiP6uL5tNrV1FiutKtAyQGGJ1CWAsqQ6Kp2XZ12/CvZxw8MvNJfdhh0yTwjPIir4SWag2/MHrseR7PRmNtvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<a href="https://localhost:44337/Admin/CreateEvent"><button class="btn btn-primary">Create New Menu</button></a>
+    <script type="text/javascript">
+        // Extract data from the model and encode as JSON
+        const barChartLabels = @Html.Raw(Json.Encode(Model.barChartLabels));
+        const barChartData = @Html.Raw(Json.Encode(Model.barChartData));
+        const pieChartLabels = @Html.Raw(Json.Encode(Model.pieChartLabels));
+        const pieChartData = @Html.Raw(Json.Encode(Model.pieChartData));
+        const lineChartLabels = @Html.Raw(Json.Encode(Model.lineChartLabels));
+        const lineChartData = @Html.Raw(Json.Encode(Model.lineChartData));
+
+        // Set up the bar chart
+        const barChart = document.getElementById('barChart').getContext('2d');
+        const myBarChart = new Chart(barChart, {
+            type: 'bar',
+            data: {
+                labels: barChartLabels,
+                datasets: [{
+                    label: 'Number of Bookings',
+                    data: barChartData,
+                    backgroundColor: '#090e3b',
+                    borderColor: '#f5f5f5',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        gridLines: {
+                            color: '#f5f5f5'
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#f5f5f5'
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#090e3b'
+                    }
+                }
+            }
+        });
+
+        // Set up the pie chart
+        const pieChart = document.getElementById('pieChart').getContext('2d');
+        const myPieChart = new Chart(pieChart, {
+            type: 'pie',
+            data: {
+                labels: pieChartLabels,
+                datasets: [{
+                    label: 'Pie Chart',
+                    data: pieChartData,
+                    backgroundColor: ['#090e3b', '#c80000', '#f5f5f5']
+                }]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: '#090e3b'
+                    }
+                }
+            }
+        });
+
+        // Set up the line chart
+        const lineChart = document.getElementById('lineChart').getContext('2d');
+        const myLineChart = new Chart(lineChart, {
+            type: 'line',
+            data: {
+                labels: lineChartLabels,
+                datasets: [{
+                    label: 'Line Chart',
+                    data: lineChartData,
+                    backgroundColor: '#f5f5f5',
+                    borderColor: '#c80000',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#090e3b',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontColor: '#090e3b'
+                        },
+                        gridLines: {
+                            color: '#f5f5f5'
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Number of Bookings',
+                            fontColor: '#090e3b'
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: '#f5f5f5'
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Event Number',
+                            fontColor: '#090e3b'
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: '#090e3b',
+                        text: 'Number of Bookings'
+                    }
+                }
+            }
+        });
+
+
+
+    </script>
+}
