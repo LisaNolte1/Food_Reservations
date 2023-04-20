@@ -6,34 +6,26 @@
 @using (Html.BeginForm("SavePreferences", "Preferences", FormMethod.Post))
 {
     <h2>Question 1:</h2>
-    <p>Dietary Requirements?</p>
-    <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "Halal", new { Checked = ViewData["DietryRequirements"] == "2" })<label>Halal</label>
-    </div>
-    <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "Vegan", new { Checked = ViewData["DietryRequirements"] == "3" })<label>Vegan</label>
-    </div>
-    <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "Vegetarian", new { Checked = ViewData["DietryRequirements"] == "1" })<label>Vegetarian</label>
-    </div>
-    <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "None", new { Checked = ViewData["DietryRequirements"] == "4" })<label>None</label>
-    </div>
+    <p>Dietry Requirements?</p>
+    @Html.DropDownListFor(model => model.DietaryRequirements, new SelectList(
+                new List<SelectListItem>
+                {
+        new SelectListItem { Text = "Vegetarian", Value = "1" },
+        new SelectListItem { Text = "Halal", Value = "2" },
+        new SelectListItem { Text = "Vegan", Value = "3" },
+        new SelectListItem { Text = "None", Value = "4" }
+                                                    }, "Value", "Text", Model.DietaryRequirements), new { @class = "form-control" })
 
     <h2>Question 2:</h2>
     <p>Which days?</p>
-    <div>
-        @Html.RadioButtonFor(model => model.Days, 1, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "1" })<label>Wednesday</label>
-    </div>
-    <div>
-        @Html.RadioButtonFor(model => model.Days, 2, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "2" })<label>Thursday</label>
-    </div>
-    <div>
-        @Html.RadioButtonFor(model => model.Days, 3, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "3" })<label>Both</label>
-    </div>
-    <div>
-        @Html.RadioButtonFor(model => model.Days, 4, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "4" })<label>None</label>
-    </div>
+    @Html.DropDownListFor(model => model.Days, new SelectList(
+                new List<SelectListItem>
+                {
+        new SelectListItem { Text = "Wednesday", Value = "1" },
+        new SelectListItem { Text = "Thursday", Value = "2" },
+        new SelectListItem { Text = "Both", Value = "3" },
+        new SelectListItem { Text = "None", Value = "4" }
+                                                    }, "Value", "Text", Model.Days), new { @class = "form-control" })
 
 
     <h2>Question 3:</h2>
