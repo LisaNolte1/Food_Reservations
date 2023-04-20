@@ -22,7 +22,7 @@
         <br /><br />
         @Html.ActionLink("Sign out", "SignOut", "Home")
         <br /><br />
-        @Html.ActionLink("Add User", "Index", "Users")
+        @Html.ActionLink("Add User", "Users", "Users")
     }
 
     @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))

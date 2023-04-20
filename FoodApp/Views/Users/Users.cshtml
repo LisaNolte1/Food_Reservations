@@ -1,7 +1,4 @@
-﻿@*@{
-        ViewBag.Title = "Index";
-    }*@
-@model FoodApp.Models.UserForm
+﻿@model FoodApp.Models.UserForm
 
 <html>
 <head>
@@ -12,9 +9,10 @@
 <body style="padding:50px">
     <h3>Save Users</h3>
     <h4>@ViewData["error"]</h4>
-    @if (ViewData["error"] != null && ViewData["error"].ToString().Length > 0){
+    @if (ViewData["error"] != null && ViewData["error"].ToString().Length > 0)
+    {
         <p>User already exists</p>
-     }
+    }
     @using (Html.BeginForm("SaveUser", "Users", FormMethod.Post))
     {
         <p>User Email</p>
@@ -22,11 +20,7 @@
             @Html.TextBoxFor(model => model.UserEmail)
         </div>
 
-        @*<p>Dietary Requirements?</p>
-        <div>
-            @Html.TextBoxFor(model => model.RoleName)
-        </div>*@
-        <div>
+        <div style="padding:50px">
             <label>&nbsp;</label>
             <input type="submit" value="Submit" class="submit" />
         </div>
