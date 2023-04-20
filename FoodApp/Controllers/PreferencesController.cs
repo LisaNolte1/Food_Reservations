@@ -11,9 +11,11 @@ using System.Web.UI.WebControls;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     public class PreferencesController : Controller
     {
-        
+
+        [Authorize]
         public ActionResult Preferences()
         {
             
@@ -93,8 +95,6 @@ namespace FoodApp.Controllers
 
             string userfullname = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
             string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
-            Debug.WriteLine(userfullname);
-            Debug.WriteLine(emailAddress);
 
             var db = new DbContext();
             string userQuery = $"SELECT user_id FROM Users WHERE user_email = '{emailAddress}'";

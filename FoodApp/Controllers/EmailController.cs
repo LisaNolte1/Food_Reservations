@@ -8,6 +8,8 @@ using FoodApp.Controllers.Utility;
 using System.IO;
 using System.Net.Mime;
 using System.Diagnostics;
+using FoodApp.EventHandlers;
+using System.Reflection;
 
 namespace FoodApp.Controllers
 {
@@ -15,10 +17,11 @@ namespace FoodApp.Controllers
     [Route("/Email")]
     public class EmailController : Controller
     {
-        public EmailController() 
+        public static event NewEmailAddedEventHandler NewEmailAdded;
+
+        protected virtual void OnNewEmailAdded(NewEmailAddedEventArgs e)
         {
-            var a = new AdminController();
-            a.NewEmailAdded += a_NewEmailAdded;
+            NewEmailAdded?.Invoke(this, e);
         }
 
         // GET: Email
@@ -28,31 +31,17 @@ namespace FoodApp.Controllers
         {
             List<string> emails = MainUtility.GetMailingList();
             ViewData["MailingList"] = emails;
+            NewEmailAddedEventArgs args;
             foreach (string email in emails)
             {
-                MailMessage mail = MainUtility.GetMailMessage(email);
-                using (mail)
-                {
-                    if(MainUtility.SendEmail(mail))
-                    {
-                        
-                        ViewData["Title"] = "Email sent!";
-                    }
-                    else
-                    {
-                        ViewData["Title"] = "Email Failed to send!";
-                        ViewData["error"] = ViewData["error"].ToString() + '\n' + email;
-                    }
-                }
+                args = new NewEmailAddedEventArgs();
+                args.Email = email;
+                OnNewEmailAdded(args);
             }
-            
+
+            ViewData["title"] = "Emails Sent!";
+
             return View();
-
-        }
-
-        static void a_NewEmailAdded(object sender, NewEmailAddedEventArgs e) { 
-            MailMessage mail = MainUtility.GetMailMessage(e.Email);
-            MainUtility.SendEmail(mail);
         }
     }
 }
