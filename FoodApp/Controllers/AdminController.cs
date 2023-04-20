@@ -14,10 +14,10 @@ using FoodApp.Models;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         
-
         public ActionResult Admin()
         {
             var dbContext = new DbContext();
@@ -104,9 +104,6 @@ namespace FoodApp.Controllers
 
         public ActionResult SaveEvent(Models.Menu model)
         {
-            Debug.WriteLine(model.ExpiryDate);
-            Debug.WriteLine(model.CuisineIdThursday);
-            Debug.WriteLine(model.CuisineIdWednesday);
             var resp = SaveInternal(model);
             if (!resp)
             {

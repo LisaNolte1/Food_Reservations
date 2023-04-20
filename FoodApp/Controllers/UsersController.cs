@@ -1,4 +1,5 @@
 ﻿using FoodApp.Controllers.Utility;
+using FoodApp.EventHandlers;
 using FoodApp.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FoodApp.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         public static event NewEmailAddedEventHandler NewEmailAdded;
@@ -17,11 +19,10 @@ namespace FoodApp.Controllers
         private string didError = null;
         protected virtual void OnNewEmailAdded(NewEmailAddedEventArgs e)
         {
-            Debug.WriteLine("hello there");
             NewEmailAdded?.Invoke(this, e);
         }
 
-        public ViewResult Index()
+        public ViewResult Users()
         {
             //Query to get the roles
             if (didError != null)
@@ -34,7 +35,6 @@ namespace FoodApp.Controllers
 
         public ActionResult saveUser(UserForm model)
         {
-            Debug.WriteLine(model.UserEmail);
             try
             {
                 var db = new DbContext();
@@ -43,12 +43,11 @@ namespace FoodApp.Controllers
                 NewEmailAddedEventArgs args = new NewEmailAddedEventArgs();
                 args.Email = model.UserEmail;
                 OnNewEmailAdded(args);
-                
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
                 ViewData["error"] = ex.ToString();
                 didError = ex.ToString();
                 return RedirectToAction("Index", "Home");

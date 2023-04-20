@@ -27,7 +27,6 @@ namespace FoodApp.Controllers.Utility
             List<string> emails = new List<string>();
             foreach (DataRow row in result) 
             {
-                Debug.WriteLine(row[0]);
                 emails.Add(row[0].ToString());
             }
             return emails;
@@ -59,6 +58,7 @@ namespace FoodApp.Controllers.Utility
 
         public static bool SendEmail(MailMessage mail)
         {
+
             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
             {
                 smtp.Credentials = new NetworkCredential(MainUtility.noreplyEmail, MainUtility.MyAuth);

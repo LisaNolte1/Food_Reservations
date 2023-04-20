@@ -22,7 +22,6 @@ namespace FoodApp.Controllers.Utility
                 string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
                 var db = new DbContext();
                 string readStatement = $"SELECT * FROM EVENTS WHERE active = 1";
-                Debug.WriteLine(readStatement);
                 var result = db.ExecuteQuery(readStatement, null).Rows;
                 var userIDResult = db.ExecuteQuery($"SELECT user_id FROM USERS WHERE user_email = '{emailAddress}'", null).Rows;
                 int userID = (int)userIDResult[0][0];
@@ -69,7 +68,6 @@ namespace FoodApp.Controllers.Utility
         {
             var db = new DbContext();
             string readStatement = $"SELECT * FROM EVENTS WHERE active = 1";
-            Debug.WriteLine(readStatement);
             var result = db.ExecuteQuery(readStatement, null).Rows;
             List<KeyValuePair<int, string>> wedOptions = new List<KeyValuePair<int, string>>();
             List<KeyValuePair<int, string>> thursOptions = new List<KeyValuePair<int, string>>();
