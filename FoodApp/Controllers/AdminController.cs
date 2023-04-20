@@ -110,7 +110,7 @@ namespace FoodApp.Controllers
             var resp = SaveInternal(model);
             if (!resp)
             {
-                ViewData["itle"] = "Fail";
+                ViewData["Title"] = "Fail";
             }
             return View();
         }
