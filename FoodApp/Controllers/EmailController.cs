@@ -39,6 +39,8 @@ namespace FoodApp.Controllers
                 OnNewEmailAdded(args);
             }
 
+            ViewData["title"] = "Emails Sent!";
+
             return View();
         }
     }
