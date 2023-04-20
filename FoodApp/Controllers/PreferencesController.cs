@@ -13,14 +13,42 @@ namespace FoodApp.Controllers
 {
     public class PreferencesController : Controller
     {
-
+        
         public ActionResult Preferences()
         {
+            
+            //query to retrieve user id and the user's settings row 
+            string emailAddress = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
+            var db = new DbContext();
+            string userQuery = $"SELECT user_id FROM Users WHERE user_email = '{emailAddress}'";
+            var userResult = db.ExecuteQuery(userQuery, null);
+            DataRow res1 = userResult.Rows[0];
+            int userId = res1.Field<int>("user_id");
+
+            string prefQuery = $"SELECT user_id, day_id, preference_id from Settings WHERE user_id = {userId}";
+            var prefResult = db.ExecuteQuery(prefQuery, null);
+
+            // Create the view model and set any existing preferences
+            var viewModel = new FormSelection();
+            if (prefResult.Rows.Count > 0)
+            {
+                
+                DataRow prefRow = prefResult.Rows[0];
+                ViewData["DietryRequirements"] = prefRow.Field<int>("preference_id").ToString();
+                ViewData["Days"]= viewModel.Days = prefRow.Field<int>("day_id");
+                //viewModel.DietaryRequirements = prefRow.Field<int>("preference_id").ToString();
+                //viewModel.Days = prefRow.Field<int>("day_id");
+                
+            }
+
             var menu = MainUtility.GetWeeklyMenu();
             ViewData["wednesdayOptions"] = menu[0];
             ViewData["thursdayOptions"] = menu[1];
-            return View();
+            return View(viewModel);
         }
+        
+
+     
 
         [Authorize]
         public ActionResult SavePreferences(FormSelection model)
@@ -53,7 +81,7 @@ namespace FoodApp.Controllers
             }
             else
             {
-                string insertQuery = $"INSERT INTO Settings VALUES ({userId}, {preferenceId}, {dayId})";
+                string insertQuery = $"INSERT INTO Settings VALUES ({userId}, {dayId}, {preferenceId})";
                 var insertResult = db.ExecuteQuery(insertQuery, null);
             }     
             

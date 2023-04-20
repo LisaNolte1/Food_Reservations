@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Collections.Generic;
+
 namespace FoodApp.Models
 {
     public class FormSelection
@@ -8,6 +11,6 @@ namespace FoodApp.Models
         public int wedFood { get; set; }
         public int thursFood { get; set; }
 
-    
+
     }
 }

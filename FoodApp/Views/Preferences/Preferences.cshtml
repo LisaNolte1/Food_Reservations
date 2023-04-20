@@ -1,4 +1,6 @@
 ﻿
+
+
 @model FoodApp.Models.FormSelection
 
 @using (Html.BeginForm("SavePreferences", "Preferences", FormMethod.Post))
@@ -6,46 +8,46 @@
     <h2>Question 1:</h2>
     <p>Dietary Requirements?</p>
     <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "Halal")<label>Halal</label>
+        @Html.RadioButtonFor(model => model.DietaryRequirements, "Halal", new { Checked = ViewData["DietryRequirements"] == "2" })<label>Halal</label>
     </div>
     <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "Vegan")<label>Vegan</label>
+        @Html.RadioButtonFor(model => model.DietaryRequirements, "Vegan", new { Checked = ViewData["DietryRequirements"] == "3" })<label>Vegan</label>
     </div>
     <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "Vegetarian")<label>Vegetarian</label>
+        @Html.RadioButtonFor(model => model.DietaryRequirements, "Vegetarian", new { Checked = ViewData["DietryRequirements"] == "1" })<label>Vegetarian</label>
     </div>
     <div>
-        @Html.RadioButtonFor(model => model.DietaryRequirements, "None")<label>None</label>
+        @Html.RadioButtonFor(model => model.DietaryRequirements, "None", new { Checked = ViewData["DietryRequirements"] == "4" })<label>None</label>
     </div>
 
     <h2>Question 2:</h2>
     <p>Which days?</p>
     <div>
-        @Html.RadioButtonFor(model => model.Days, 1)<label>Wednesday</label>
+        @Html.RadioButtonFor(model => model.Days, 1, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "1" })<label>Wednesday</label>
     </div>
     <div>
-        @Html.RadioButtonFor(model => model.Days, 2)<label>Thursday</label>
+        @Html.RadioButtonFor(model => model.Days, 2, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "2" })<label>Thursday</label>
     </div>
     <div>
-        @Html.RadioButtonFor(model => model.Days, 3)<label>Both</label>
+        @Html.RadioButtonFor(model => model.Days, 3, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "3" })<label>Both</label>
     </div>
     <div>
-        @Html.RadioButtonFor(model => model.Days, 4)<label>None</label>
+        @Html.RadioButtonFor(model => model.Days, 4, new { Checked = ViewData["Days"] != null && ViewData["Days"].ToString() == "4" })<label>None</label>
     </div>
 
 
     <h2>Question 3:</h2>
     <p>Which Food for wednesday?</p>
-    foreach (var item in ViewData["wednesdayOptions"] as List<KeyValuePair<int,string>>)
+    foreach (var item in ViewData["wednesdayOptions"] as List<KeyValuePair<int, string>>)
     {
         <div>
             @Html.RadioButtonFor(model => model.wedFood, @item.Key)<label>@item.Value</label>
         </div>
     }
-    
+
     <h2>Question 4:</h2>
     <p>Which Food for Thursday?</p>
-    foreach (var item in ViewData["thursdayOptions"] as List<KeyValuePair<int,string>>)
+    foreach (var item in ViewData["thursdayOptions"] as List<KeyValuePair<int, string>>)
     {
         <div>
             @Html.RadioButtonFor(model => model.thursFood, @item.Key)<label>@item.Value</label>
