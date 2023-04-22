@@ -3,14 +3,12 @@ using System.Data;
 using System;
 
 namespace FoodApp
-{
+{ 
     public class DbContext : IDisposable
     {
-<<<<<<< HEAD
+
         private readonly string connectionString = "data source=BONGADU\\SQLEXPRESS; database=FoodApp; User ID=259;Password=;Integrated Security=SSPI";
-=======
-        private readonly string connectionString = "data source=localhost; database=FoodApp; User ID=259;Password=;Integrated Security=SSPI";
->>>>>>> 456b83553eb9f6fb68e369d5a25add1083d36b26
+
         private readonly SqlConnection connection;
 
         public DbContext()
