@@ -11,7 +11,7 @@ GO
 
 CREATE TABLE [USERS] (
   [user_id] integer IDENTITY(1,1) PRIMARY KEY,
-  [user_email] nvarchar(255),
+  [user_email] nvarchar(255) UNIQUE,
   [preference_id] integer,
   [role_id] integer,
 )
@@ -179,25 +179,20 @@ INSERT INTO [dbo].[CUISINES_OPTIONS]
 GO
 
 INSERT INTO [dbo].[EVENTS]
-			([cuisine_id], [day_id])
+			([cuisine_id], [day_id], [event_date], [active])
 			VALUES
-			(1, 2),
-			(2, 1),
-			(3, 1)
+			(1, 2, '2023-04-18', 0),
+			(2, 1, '2023-04-20', 1),
+			(3, 1, '2023-04-26', 1)
 
 INSERT INTO [dbo].[BOOKINGS]
 			([user_id], [event_id], [cuisine_options_id])
 			VALUES
 			(1, 1, 2),
 			(2, 1, 2),
-			(3, 1, 2),
-			(4, 1, 3),
-			(5, 1, 1),
-			(6, 1, 2),
 			(1, 2, 5),
 			(2, 2, 5),
 			(3, 2, 5),
-			(4, 2, 6),
 			(5, 2, 7),
 			(6, 2, 6),
 			(1, 3, 8),

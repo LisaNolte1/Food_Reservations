@@ -1,0 +1,30 @@
+﻿@model FoodApp.Models.UserForm
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Save User</title>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+</head>
+<body style="padding:50px">
+    <h3>Save Users</h3>
+    <h4>@ViewData["error"]</h4>
+    @if (ViewData["error"] != null && ViewData["error"].ToString().Length > 0)
+    {
+        <p>User already exists</p>
+    }
+    @using (Html.BeginForm("SaveUser", "Users", FormMethod.Post))
+    {
+        <p>User Email</p>
+        <div>
+            @Html.TextBoxFor(model => model.UserEmail)
+        </div>
+
+        <div style="padding:50px">
+            <label>&nbsp;</label>
+            <input type="submit" value="Submit" class="submit" />
+        </div>
+
+    }
+</body>
+</html>

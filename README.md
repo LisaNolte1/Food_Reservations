@@ -4,10 +4,10 @@ An app that sends emails allowing people to make a reservation for lunch, collec
 ## Authors
 
 Bonga Duba
-[(@)](https://github.com/)
+[(@Ayabongar)](https://github.com/Ayabongar)
 
 Ivan Von Staden
-[(@)](https://github.com/)
+[(@IvanVBBD)](https://github.com/IvanVBBD)
 
 Karl Haupt
 [(@KarlHaupt)](https://github.com/KarlHaupt)
@@ -22,4 +22,4 @@ Ryan Parker
 [(@ryanneilparker)](https://github.com/ryanneilparker)
 
 Stephen Potgieter
-[(@)](https://github.com/)
+[(@StephenPotgieter)](https://github.com/StephenPotgieter)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Security;
 using System.Web;
 using System.Web.Helpers;
 
@@ -26,7 +27,6 @@ namespace FoodApp.Controllers.Utility
             List<string> emails = new List<string>();
             foreach (DataRow row in result) 
             {
-                Debug.WriteLine(row[0]);
                 emails.Add(row[0].ToString());
             }
             return emails;
@@ -58,9 +58,10 @@ namespace FoodApp.Controllers.Utility
 
         public static bool SendEmail(MailMessage mail)
         {
+
             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
             {
-                smtp.Credentials = new NetworkCredential(MainUtility.noreplyEmail, Authinator.MyAuth);
+                smtp.Credentials = new NetworkCredential(MainUtility.noreplyEmail, MainUtility.MyAuth);
                 smtp.EnableSsl = true;
                try
                 {
@@ -70,10 +71,18 @@ namespace FoodApp.Controllers.Utility
                 catch (Exception ex) 
                 {
                     //log the error here
+                    Debug.WriteLine(ex.ToString());
                     return false;
                 }
 
             }
+        }
+
+        private static SecureString myVar = new NetworkCredential("", "phvjwlngmzyrpqml").SecurePassword;
+
+        public static SecureString MyAuth
+        {
+            get { return myVar; }
         }
     }
 }
